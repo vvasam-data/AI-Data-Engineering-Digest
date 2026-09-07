@@ -320,7 +320,12 @@ def run_agent_pipeline():
     Fetch RSS feeds from:
     [
       "https://rss.arxiv.org/rss/cs.DB",
-      "https://blog.langchain.dev/rss/"
+      "https://blog.langchain.dev/rss/",
+      "https://www.snowflake.com/blog/feed/",
+      "https://www.dataengineeringweekly.com/feed/",
+      "https://www.databricks.com/blog/rss.xml",
+      "https://netflixtechblog.com/feed",
+      "https://huggingface.co/blog/feed.xml
     ]
 
     Filter for high-signal updates and send the daily digest email to "{recipient_email}".
