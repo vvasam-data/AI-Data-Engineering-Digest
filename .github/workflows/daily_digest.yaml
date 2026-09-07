@@ -1,29 +1,38 @@
-name: Daily AI Data Engineering Digest
+name: Daily Data Engineering Digest
 
 on:
   schedule:
     - cron: '0 12 * * *'  # Runs daily at 12:00 UTC (8:00 AM EST)
-  workflow_dispatch:      # Enables manual trigger button in GitHub UI
+  workflow_dispatch:      # Manual trigger button
 
 jobs:
-  run-agent:
+  run-digest-agent:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Check out repo code
+      - name: Checkout repository
         uses: actions/checkout@v4
-      
-      - name: Set up Python 3.11
+
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          
+
       - name: Install dependencies
         run: |
+          python -m pip install --upgrade pip
           pip install langchain langchain-community langchain-google-genai feedparser resend youtube-transcript-api youtube-search-python pydantic
-          
+
       - name: Execute Agent Digest Script
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           RECEPEINT_EMAIL: ${{ secrets.RECEPEINT_EMAIL }}
         run: python agent_digest.py
+
+      - name: Commit updated sent history to repository
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add sent_history.json || true
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: update sent digest history [skip ci]" && git push)

@@ -2,6 +2,7 @@ import os
 import json
 import feedparser
 import resend
+from datetime import datetime, timezone, timedelta
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtubesearchpython import VideosSearch
 
@@ -9,17 +10,71 @@ from langchain_core.tools import tool
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage, SystemMessage
 
+HISTORY_FILE = "sent_history.json"
+RETENTION_DAYS = 30
+
 # ---------------------------------------------------------------------------
-# 1. DEFINE TOOLS
+# 1. HISTORY DEDUPLICATION & 30-DAY RETENTION HELPERS
+# ---------------------------------------------------------------------------
+
+def load_sent_history() -> dict:
+    """
+    Loads sent history and automatically prunes any items older than 30 days.
+    Returns a dictionary of { link_or_id: ISO_timestamp_str }.
+    """
+    if not os.path.exists(HISTORY_FILE):
+        return {}
+
+    try:
+        with open(HISTORY_FILE, "r") as f:
+            data = json.load(f)
+            
+        # Backward compatibility for flat list format
+        if isinstance(data, list):
+            now_iso = datetime.now(timezone.utc).isoformat()
+            data = {item: now_iso for item in data}
+
+        cutoff = datetime.now(timezone.utc) - timedelta(days=RETENTION_DAYS)
+        active_history = {}
+
+        for item_key, timestamp_str in data.items():
+            try:
+                item_time = datetime.fromisoformat(timestamp_str)
+                if item_time >= cutoff:
+                    active_history[item_key] = timestamp_str
+            except Exception:
+                continue
+
+        return active_history
+    except Exception:
+        return {}
+
+
+def save_sent_history(new_item_keys: list):
+    """
+    Appends newly sent items with current timestamp, prunes entries >30 days old,
+    and writes the updated dictionary back to sent_history.json.
+    """
+    history = load_sent_history()
+    now_iso = datetime.now(timezone.utc).isoformat()
+
+    for item in new_item_keys:
+        history[item] = now_iso
+
+    with open(HISTORY_FILE, "w") as f:
+        json.dump(history, f, indent=2)
+
+# ---------------------------------------------------------------------------
+# 2. DEFINE AGENT TOOLS
 # ---------------------------------------------------------------------------
 
 @tool
 def search_trending_youtube_videos(queries: list[str]) -> str:
     """
-    Searches YouTube for recent videos matching Data Engineering AI topics 
-    (Snowflake Cortex, Databricks LTAP, Data Governance, Data Ingestion).
-    Extracts video metadata and transcripts for evaluation.
+    Searches YouTube for recent Data Engineering AI videos.
+    Automatically filters out videos sent within the last 30 days.
     """
+    sent_history = load_sent_history()
     found_videos = []
     
     for query in queries:
@@ -34,6 +89,11 @@ def search_trending_youtube_videos(queries: list[str]) -> str:
                     
                 video_url = f"https://www.youtube.com/watch?v={video_id}"
                 
+                # Skip if sent within the last 30 days
+                if video_url in sent_history or video_id in sent_history:
+                    continue
+                
+                # Extract transcript snippet
                 try:
                     transcript_list = YouTubeTranscriptApi.get_transcript(video_id)
                     transcript_text = " ".join([t['text'] for t in transcript_list[:40]])
@@ -41,6 +101,7 @@ def search_trending_youtube_videos(queries: list[str]) -> str:
                     transcript_text = "Transcript unavailable."
 
                 found_videos.append({
+                    "id": video_id,
                     "title": video.get('title'),
                     "link": video_url,
                     "channel": video.get('channel', {}).get('name', 'Unknown Channel'),
@@ -56,22 +117,36 @@ def search_trending_youtube_videos(queries: list[str]) -> str:
 
 @tool
 def fetch_rss_updates(rss_urls: list[str]) -> str:
-    """Fetches latest entries from specified RSS feeds."""
+    """
+    Fetches latest entries from specified RSS feeds.
+    Automatically filters out articles sent within the last 30 days.
+    """
+    sent_history = load_sent_history()
     fetched_data = []
+    
     for url in rss_urls:
         feed = feedparser.parse(url)
         for entry in feed.entries[:3]:
+            article_link = getattr(entry, "link", "")
+            
+            # Skip if sent within the last 30 days
+            if article_link in sent_history:
+                continue
+
             fetched_data.append({
-                "title": entry.title,
-                "link": entry.link,
+                "title": getattr(entry, "title", "No Title"),
+                "link": article_link,
                 "summary": getattr(entry, "summary", "")
             })
+            
     return json.dumps(fetched_data, indent=2)
 
 
 @tool
-def send_email_digest(to_email: str, subject: str, html_content: str) -> str:
-    """Sends formatted HTML email digest via Resend API."""
+def send_email_digest(to_email: str, subject: str, html_content: str, sent_item_links: list[str]) -> str:
+    """
+    Sends formatted HTML email digest via Resend API and records sent links in history.
+    """
     resend.api_key = os.environ.get("RESEND_API_KEY")
     if not resend.api_key:
         return "Error: RESEND_API_KEY environment variable not configured."
@@ -83,35 +158,39 @@ def send_email_digest(to_email: str, subject: str, html_content: str) -> str:
             "subject": subject,
             "html": html_content
         })
-        return "Email sent successfully."
+        
+        # Save newly sent items and prune entries older than 30 days
+        save_sent_history(sent_item_links)
+            
+        return "Email sent successfully and 30-day history updated."
     except Exception as e:
         return f"Failed to send email: {str(e)}"
 
 # ---------------------------------------------------------------------------
-# 2. RUNNER PIPELINE WITH DIRECT TOOL BINDING
+# 3. RUNNER PIPELINE WITH DIRECT TOOL BINDING
 # ---------------------------------------------------------------------------
 
 def run_agent_pipeline():
     gemini_api_key = os.environ.get("GEMINI_API_KEY")
+    # Matches your exact GitHub Action secret variable spelling
     recipient_email = os.environ.get("RECEPEINT_EMAIL")
 
     if not gemini_api_key or not recipient_email:
         raise ValueError("Missing GEMINI_API_KEY or RECEPEINT_EMAIL environment variables.")
 
-    # Tool dictionary for execution mapping
     tools = [search_trending_youtube_videos, fetch_rss_updates, send_email_digest]
     tools_by_name = {t.name: t for t in tools}
 
-    # Bind tools directly to Gemini model
+    # Bind tools directly to Gemini model using gemini-1.5-flash
     llm = ChatGoogleGenerativeAI(
-        model="gemini-3.6-flash",
+        model="gemini-1.5-flash",
         google_api_key=gemini_api_key,
         temperature=0.2
     ).bind_tools(tools)
 
     system_instruction = """
     You are an autonomous Senior Data Engineering AI Agent.
-    Your goal is to find trending YouTube videos and RSS news published recently (last 3 days) 
+    Your goal is to find new trending YouTube videos and RSS news published recently 
     focused on:
     - Snowflake Cortex AI
     - Databricks LTAP / Lakehouse developments
@@ -122,13 +201,15 @@ def run_agent_pipeline():
     Workflow:
     1. Call `search_trending_youtube_videos` using relevant search terms.
     2. Call `fetch_rss_updates` for core blog updates.
-    3. Evaluate content through a Data Engineering lens.
-    4. For high-value items (Score 7/10 or higher), construct an HTML digest containing:
+    3. Evaluate retrieved items through a Data Engineering lens.
+    4. Construct a clean HTML digest containing high-value items (Score 7/10+):
        - Video / Article Title & Direct Link
        - Channel Name / Views / Publish Date
        - **What's New in There:** (Key features or announcements)
        - **Why You Need to Watch/Read:** (Impact on engineering pipelines, performance, or costs)
-    5. Dispatch the HTML digest using `send_email_digest`.
+    5. Pass all the links included in your email into the `sent_item_links` parameter of `send_email_digest`.
+    6. If no new high-quality items are found (all retrieved items were sent recently or are irrelevant), 
+       send a lightweight email stating: "<p>No new high-signal Data Engineering AI updates found today.</p>"
     """
 
     user_prompt = f"""
@@ -146,7 +227,7 @@ def run_agent_pipeline():
       "https://blog.langchain.dev/rss/"
     ]
 
-    Filter for high-signal updates from the last 3 days and send the email digest to "{recipient_email}".
+    Filter for high-signal updates and send the daily digest email to "{recipient_email}".
     """
 
     messages = [
@@ -154,28 +235,25 @@ def run_agent_pipeline():
         HumanMessage(content=user_prompt)
     ]
 
-    # Execution Loop: Model calls tools, updates context, completes action
     response = llm.invoke(messages)
     messages.append(response)
 
-    # Process tool calls emitted by LLM
+    # Tool Execution Loop
     while response.tool_calls:
         for tool_call in response.tool_calls:
             selected_tool = tools_by_name[tool_call["name"]]
             tool_output = selected_tool.invoke(tool_call["args"])
             
-            # Append tool result back to message history
             messages.append({
                 "role": "tool",
                 "content": str(tool_output),
                 "tool_call_id": tool_call["id"]
             })
             
-        # Call LLM with updated tool results
         response = llm.invoke(messages)
         messages.append(response)
 
-    print("Agent pipeline completed execution.")
+    print("Agent pipeline completed execution successfully.")
 
 if __name__ == "__main__":
     run_agent_pipeline()
