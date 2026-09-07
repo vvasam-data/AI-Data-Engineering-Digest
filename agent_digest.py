@@ -183,7 +183,7 @@ def run_agent_pipeline():
 
     # Bind tools directly to Gemini model using gemini-3.6-flash
     llm = ChatGoogleGenerativeAI(
-        model="gemini-3.6-flash",
+        model="gemini-3.5-flash-lite",
         google_api_key=gemini_api_key,
         temperature=0.2
     ).bind_tools(tools)
