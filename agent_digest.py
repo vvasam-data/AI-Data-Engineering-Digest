@@ -93,10 +93,10 @@ def send_email_digest(to_email: str, subject: str, html_content: str) -> str:
 
 def run_agent_pipeline():
     gemini_api_key = os.environ.get("GEMINI_API_KEY")
-    recipient_email = os.environ.get("RECIPIENT_EMAIL")
+    recipient_email = os.environ.get("RECEPEINT_EMAIL")
 
     if not gemini_api_key or not recipient_email:
-        raise ValueError("Missing GEMINI_API_KEY or RECIPIENT_EMAIL environment variables.")
+        raise ValueError("Missing GEMINI_API_KEY or RECEPEINT_EMAIL environment variables.")
 
     # Tool dictionary for execution mapping
     tools = [search_trending_youtube_videos, fetch_rss_updates, send_email_digest]

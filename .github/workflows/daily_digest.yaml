@@ -25,5 +25,5 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+          RECEPEINT_EMAIL: ${{ secrets.RECEPEINT_EMAIL }}
         run: python agent_digest.py
