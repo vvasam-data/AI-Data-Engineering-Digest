@@ -4,13 +4,13 @@ import feedparser
 import resend
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtubesearchpython import VideosSearch
+
 from langchain_core.tools import tool
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain.agents import AgentExecutor, create_tool_calling_agent
-from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.messages import HumanMessage, SystemMessage
 
 # ---------------------------------------------------------------------------
-# 1. DEFINE TOOLS FOR THE AGENT HARNESS
+# 1. DEFINE TOOLS
 # ---------------------------------------------------------------------------
 
 @tool
@@ -24,7 +24,6 @@ def search_trending_youtube_videos(queries: list[str]) -> str:
     
     for query in queries:
         try:
-            # Search YouTube using VideosSearch
             custom_search = VideosSearch(query, limit=5)
             results = custom_search.result().get('result', [])
             
@@ -35,7 +34,6 @@ def search_trending_youtube_videos(queries: list[str]) -> str:
                     
                 video_url = f"https://www.youtube.com/watch?v={video_id}"
                 
-                # Fetch transcript snippet
                 try:
                     transcript_list = YouTubeTranscriptApi.get_transcript(video_id)
                     transcript_text = " ".join([t['text'] for t in transcript_list[:40]])
@@ -50,7 +48,7 @@ def search_trending_youtube_videos(queries: list[str]) -> str:
                     "publish_time": video.get('publishedTime', 'N/A'),
                     "transcript_snippet": transcript_text
                 })
-        except Exception as e:
+        except Exception:
             continue
 
     return json.dumps(found_videos, indent=2)
@@ -90,77 +88,94 @@ def send_email_digest(to_email: str, subject: str, html_content: str) -> str:
         return f"Failed to send email: {str(e)}"
 
 # ---------------------------------------------------------------------------
-# 2. CONFIGURE AGENT HARNESS & EXECUTION
+# 2. RUNNER PIPELINE WITH DIRECT TOOL BINDING
 # ---------------------------------------------------------------------------
 
 def run_agent_pipeline():
     gemini_api_key = os.environ.get("GEMINI_API_KEY")
     recipient_email = os.environ.get("RECIPIENT_EMAIL")
 
-    if not gemini_api_key:
-        raise ValueError("Missing GEMINI_API_KEY environment variable.")
-    if not recipient_email:
-        raise ValueError("Missing RECIPIENT_EMAIL environment variable.")
+    if not gemini_api_key or not recipient_email:
+        raise ValueError("Missing GEMINI_API_KEY or RECIPIENT_EMAIL environment variables.")
 
-    # Initialize LLM with Google Gemini
+    # Tool dictionary for execution mapping
+    tools = [search_trending_youtube_videos, fetch_rss_updates, send_email_digest]
+    tools_by_name = {t.name: t for t in tools}
+
+    # Bind tools directly to Gemini model
     llm = ChatGoogleGenerativeAI(
         model="gemini-2.5-flash",
         google_api_key=gemini_api_key,
         temperature=0.2
-    )
+    ).bind_tools(tools)
 
-    tools = [search_trending_youtube_videos, fetch_rss_updates, send_email_digest]
+    system_instruction = """
+    You are an autonomous Senior Data Engineering AI Agent.
+    Your goal is to find trending YouTube videos and RSS news published recently (last 3 days) 
+    focused on:
+    - Snowflake Cortex AI
+    - Databricks LTAP / Lakehouse developments
+    - AI-driven Data Governance & Quality
+    - Data Ingestion & Real-time Pipelines
+    - Trending Data Engineering architectural updates
 
-    prompt = ChatPromptTemplate.from_messages([
-        ("system", """
-        You are an autonomous Senior Data Engineering AI Agent.
-        Your goal is to find trending YouTube videos and RSS news published recently (last 3 days) 
-        focused on:
-        - Snowflake Cortex AI
-        - Databricks LTAP / Lakehouse developments
-        - AI-driven Data Governance & Quality
-        - Data Ingestion & Real-time Pipelines
-        - Trending Data Engineering architectural updates
+    Workflow:
+    1. Call `search_trending_youtube_videos` using relevant search terms.
+    2. Call `fetch_rss_updates` for core blog updates.
+    3. Evaluate content through a Data Engineering lens.
+    4. For high-value items (Score 7/10 or higher), construct an HTML digest containing:
+       - Video / Article Title & Direct Link
+       - Channel Name / Views / Publish Date
+       - **What's New in There:** (Key features or announcements)
+       - **Why You Need to Watch/Read:** (Impact on engineering pipelines, performance, or costs)
+    5. Dispatch the HTML digest using `send_email_digest`.
+    """
 
-        Workflow:
-        1. Call `search_trending_youtube_videos` using relevant search terms.
-        2. Call `fetch_rss_updates` for core blog updates.
-        3. Evaluate content through a Data Engineering lens.
-        4. For high-value items (Score 7/10 or higher), construct an HTML digest containing:
-           - Video / Article Title & Direct Link
-           - Channel Name / Views / Publish Date
-           - **What's New in There:** (Key features or announcements)
-           - **Why You Need to Watch/Read:** (Impact on engineering pipelines, performance, or costs)
-        5. Dispatch the HTML digest using `send_email_digest`.
-        """),
-        ("human", "{input}"),
-        ("placeholder", "{agent_scratchpad}")
-    ])
+    user_prompt = f"""
+    Execute YouTube searches for:
+    [
+      "Snowflake Cortex AI",
+      "Databricks LTAP",
+      "AI Data Governance",
+      "Data Ingestion AI Data Engineering"
+    ]
 
-    agent = create_tool_calling_agent(llm, tools, prompt)
-    agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+    Fetch RSS feeds from:
+    [
+      "https://rss.arxiv.org/rss/cs.DB",
+      "https://blog.langchain.dev/rss/"
+    ]
 
-    input_payload = {
-        "input": f"""
-        Execute YouTube searches for:
-        [
-          "Snowflake Cortex AI",
-          "Databricks LTAP",
-          "AI Data Governance",
-          "Data Ingestion AI Data Engineering"
-        ]
+    Filter for high-signal updates from the last 3 days and send the email digest to "{recipient_email}".
+    """
 
-        Fetch RSS feeds from:
-        [
-          "https://rss.arxiv.org/rss/cs.DB",
-          "https://blog.langchain.dev/rss/"
-        ]
+    messages = [
+        SystemMessage(content=system_instruction),
+        HumanMessage(content=user_prompt)
+    ]
 
-        Filter for high-signal updates from the last 3 days and send the email digest to "{recipient_email}".
-        """
-    }
+    # Execution Loop: Model calls tools, updates context, completes action
+    response = llm.invoke(messages)
+    messages.append(response)
 
-    agent_executor.invoke(input_payload)
+    # Process tool calls emitted by LLM
+    while response.tool_calls:
+        for tool_call in response.tool_calls:
+            selected_tool = tools_by_name[tool_call["name"]]
+            tool_output = selected_tool.invoke(tool_call["args"])
+            
+            # Append tool result back to message history
+            messages.append({
+                "role": "tool",
+                "content": str(tool_output),
+                "tool_call_id": tool_call["id"]
+            })
+            
+        # Call LLM with updated tool results
+        response = llm.invoke(messages)
+        messages.append(response)
+
+    print("Agent pipeline completed execution.")
 
 if __name__ == "__main__":
     run_agent_pipeline()
