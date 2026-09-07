@@ -1,6 +1,6 @@
 # 🤖 Autonomous AI Data Engineering Digest Agent
 
-An autonomous, serverless AI agent built with **LangChain**, **Google Gemini 2.5 Flash**, and **GitHub Actions**. The agent fetches daily updates from RSS feeds and YouTube channels, filters them specifically for **Data Engineering** relevance (ETL/ELT, vector databases, query engines, and LLMOps), and delivers a curated HTML digest straight to your inbox every morning.
+An autonomous, serverless AI agent built with **LangChain**, **Google Gemini 3.6 Flash**, and **GitHub Actions**. The agent fetches daily updates from RSS feeds and YouTube channels, filters them specifically for **Data Engineering** relevance (ETL/ELT, vector databases, query engines, and LLMOps), and delivers a curated HTML digest straight to your inbox every morning.
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue?style=flat-square&logo=python)
 ![LangChain](https://img.shields.io/badge/Framework-LangChain-green?style=flat-square)
@@ -22,5 +22,5 @@ An autonomous, serverless AI agent built with **LangChain**, **Google Gemini 2.5
 │                   Agent Harness (LangChain)                 │
 │                                                             │
 │  1. Fetch Updates ──>  2. LLM Reasoning  ──>  3. Deliver    │
-│     (RSS & YouTube)       (Gemini 2.5)         (Resend API) │
+│     (RSS & YouTube)       (Gemini 3.6)         (Resend API) │
 └─────────────────────────────────────────────────────────────┘
