@@ -1,0 +1,33 @@
+name: Daily AI Data Engineering Digest
+
+on:
+  schedule:
+    - cron: '0 12 * * *'  # Runs daily at 12:00 UTC (8:00 AM EST)
+  workflow_dispatch:      # Enables manual trigger button in GitHub UI
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          
+      - name: Install dependencies
+        run: |
+          pip install langchain langchain-google-genai feedparser resend youtube-transcript-api pydantic
+          
+      - name: Execute Agent Digest Script
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+        run: python agent_digest.py
+
+      - name: Install dependencies
+        run: |
+          pip install langchain langchain-google-genai feedparser resend youtube-transcript-api youtube-search-python pydantic
