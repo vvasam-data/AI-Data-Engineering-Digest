@@ -1,5 +1,6 @@
 import os
 import json
+import re
 import feedparser
 import resend
 from datetime import datetime, timezone, timedelta
@@ -12,6 +13,85 @@ from langchain_core.messages import HumanMessage, SystemMessage
 
 HISTORY_FILE = "sent_history.json"
 RETENTION_DAYS = 30
+RECENT_DAYS = 3
+
+
+def parse_datetime_value(value):
+    """Convert common RSS/YouTube timestamps into a UTC datetime."""
+    if value is None:
+        return None
+
+    if isinstance(value, datetime):
+        if value.tzinfo is None:
+            return value.replace(tzinfo=timezone.utc)
+        return value.astimezone(timezone.utc)
+
+    if isinstance(value, tuple) and len(value) >= 9:
+        try:
+            dt = datetime(*value[:6])
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+            return dt.astimezone(timezone.utc)
+        except Exception:
+            return None
+
+    if isinstance(value, str):
+        text = value.strip()
+        if not text:
+            return None
+
+        if text.endswith("Z"):
+            text = text[:-1] + "+00:00"
+
+        try:
+            dt = datetime.fromisoformat(text)
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+            return dt.astimezone(timezone.utc)
+        except ValueError:
+            pass
+
+        relative_match = re.match(
+            r"(?i)^(?P<num>\d+)\s+(?P<unit>minute|minutes|hour|hours|day|days|week|weeks|month|months|year|years)\s+ago$",
+            text,
+        )
+        if relative_match:
+            num = int(relative_match.group("num"))
+            unit = relative_match.group("unit").lower()
+            units = {
+                "minute": 1,
+                "minutes": 1,
+                "hour": 60,
+                "hours": 60,
+                "day": 24 * 60,
+                "days": 24 * 60,
+                "week": 7 * 24 * 60,
+                "weeks": 7 * 24 * 60,
+                "month": 30 * 24 * 60,
+                "months": 30 * 24 * 60,
+                "year": 365 * 24 * 60,
+                "years": 365 * 24 * 60,
+            }
+            minutes_ago = num * units[unit]
+            return datetime.now(timezone.utc) - timedelta(minutes=minutes_ago)
+
+        lowered = text.lower()
+        if lowered in {"today", "yesterday"}:
+            days = 0 if lowered == "today" else 1
+            return datetime.now(timezone.utc) - timedelta(days=days)
+
+    return None
+
+
+def is_recent_enough(value, days: int = RECENT_DAYS) -> bool:
+    """Return True when the value is within the last N days."""
+    parsed_dt = parse_datetime_value(value)
+    if parsed_dt is None:
+        return False
+
+    cutoff = datetime.now(timezone.utc) - timedelta(days=days)
+    return parsed_dt >= cutoff
+
 
 # ---------------------------------------------------------------------------
 # 1. HISTORY DEDUPLICATION & 30-DAY RETENTION HELPERS
@@ -71,29 +151,32 @@ def save_sent_history(new_item_keys: list):
 @tool
 def search_trending_youtube_videos(queries: list[str]) -> str:
     """
-    Searches YouTube for recent Data Engineering AI videos.
-    Automatically filters out videos sent within the last 30 days.
+    Searches YouTube for new Data Engineering AI videos from the last 3 days.
+    Filters out videos already sent within the last 30 days.
     """
     sent_history = load_sent_history()
     found_videos = []
-    
+
     for query in queries:
         try:
             custom_search = VideosSearch(query, limit=5)
             results = custom_search.result().get('result', [])
-            
+
             for video in results:
                 video_id = video.get('id')
                 if not video_id:
                     continue
-                    
+
+                published_time = video.get('publishedTime', '')
+                if not is_recent_enough(published_time, days=RECENT_DAYS):
+                    continue
+
                 video_url = f"https://www.youtube.com/watch?v={video_id}"
-                
-                # Skip if sent within the last 30 days
+
+                # Skip items already sent in the last 30 days
                 if video_url in sent_history or video_id in sent_history:
                     continue
-                
-                # Extract transcript snippet
+
                 try:
                     transcript_list = YouTubeTranscriptApi.get_transcript(video_id)
                     transcript_text = " ".join([t['text'] for t in transcript_list[:40]])
@@ -106,7 +189,7 @@ def search_trending_youtube_videos(queries: list[str]) -> str:
                     "link": video_url,
                     "channel": video.get('channel', {}).get('name', 'Unknown Channel'),
                     "views": video.get('viewCount', {}).get('short', 'N/A'),
-                    "publish_time": video.get('publishedTime', 'N/A'),
+                    "publish_time": published_time,
                     "transcript_snippet": transcript_text
                 })
         except Exception:
@@ -118,27 +201,40 @@ def search_trending_youtube_videos(queries: list[str]) -> str:
 @tool
 def fetch_rss_updates(rss_urls: list[str]) -> str:
     """
-    Fetches latest entries from specified RSS feeds.
-    Automatically filters out articles sent within the last 30 days.
+    Fetches only RSS entries from the last 3 days.
+    Filters out articles already sent within the last 30 days.
     """
     sent_history = load_sent_history()
     fetched_data = []
-    
+
     for url in rss_urls:
         feed = feedparser.parse(url)
         for entry in feed.entries[:3]:
             article_link = getattr(entry, "link", "")
-            
-            # Skip if sent within the last 30 days
+            if not article_link:
+                continue
+
+            published_value = getattr(entry, "published", None)
+            if not published_value:
+                published_value = getattr(entry, "published_parsed", None)
+            if not published_value:
+                published_value = getattr(entry, "updated", None)
+            if not published_value:
+                published_value = getattr(entry, "updated_parsed", None)
+
+            if not is_recent_enough(published_value, days=RECENT_DAYS):
+                continue
+
             if article_link in sent_history:
                 continue
 
             fetched_data.append({
                 "title": getattr(entry, "title", "No Title"),
                 "link": article_link,
-                "summary": getattr(entry, "summary", "")
+                "summary": getattr(entry, "summary", ""),
+                "published": published_value
             })
-            
+
     return json.dumps(fetched_data, indent=2)
 
 
