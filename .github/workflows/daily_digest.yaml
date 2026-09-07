@@ -2,12 +2,18 @@ name: Daily Data Engineering Digest
 
 on:
   schedule:
-    - cron: '0 12 * * *'  # Runs daily at 12:00 UTC (8:00 AM EST)
-  workflow_dispatch:      # Manual trigger button
+    - cron: '0 12 * * *'
+  workflow_dispatch:
 
 jobs:
   run-digest-agent:
     runs-on: ubuntu-latest
+
+    # ONLY run if the repository is yours AND the trigger actor is you
+    if: github.repository == 'vvasam-data/AI-Data-Engineering-Digest' && (github.actor == 'vvasam-data' || github.event_name == 'schedule')
+
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
