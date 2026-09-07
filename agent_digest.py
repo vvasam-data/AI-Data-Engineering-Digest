@@ -2,16 +2,15 @@ import os
 import json
 import feedparser
 import resend
-from datetime import datetime, timedelta
-from youtube_search import YoutubeSearch
 from youtube_transcript_api import YouTubeTranscriptApi
+from youtubesearchpython import VideosSearch
 from langchain_core.tools import tool
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.prompts import ChatPromptTemplate
 
 # ---------------------------------------------------------------------------
-# 1. DEFINE TOOLS
+# 1. DEFINE TOOLS FOR THE AGENT HARNESS
 # ---------------------------------------------------------------------------
 
 @tool
@@ -25,25 +24,30 @@ def search_trending_youtube_videos(queries: list[str]) -> str:
     
     for query in queries:
         try:
-            # Search YouTube for top 5 results per query
-            results = YoutubeSearch(query, max_results=5).to_dict()
+            # Search YouTube using VideosSearch
+            custom_search = VideosSearch(query, limit=5)
+            results = custom_search.result().get('result', [])
+            
             for video in results:
-                video_url = f"https://www.youtube.com/watch?v={video['id']}"
+                video_id = video.get('id')
+                if not video_id:
+                    continue
+                    
+                video_url = f"https://www.youtube.com/watch?v={video_id}"
                 
-                # Fetch transcript
+                # Fetch transcript snippet
                 try:
-                    transcript_list = YouTubeTranscriptApi.get_transcript(video['id'])
+                    transcript_list = YouTubeTranscriptApi.get_transcript(video_id)
                     transcript_text = " ".join([t['text'] for t in transcript_list[:40]])
                 except Exception:
                     transcript_text = "Transcript unavailable."
 
                 found_videos.append({
-                    "title": video['title'],
+                    "title": video.get('title'),
                     "link": video_url,
-                    "channel": video['channel'],
-                    "views": video['views'],
-                    "publish_time": video['publish_time'],
-                    "snippet": video['long_desc'],
+                    "channel": video.get('channel', {}).get('name', 'Unknown Channel'),
+                    "views": video.get('viewCount', {}).get('short', 'N/A'),
+                    "publish_time": video.get('publishedTime', 'N/A'),
                     "transcript_snippet": transcript_text
                 })
         except Exception as e:
@@ -86,16 +90,19 @@ def send_email_digest(to_email: str, subject: str, html_content: str) -> str:
         return f"Failed to send email: {str(e)}"
 
 # ---------------------------------------------------------------------------
-# 2. RUNNER SETUP
+# 2. CONFIGURE AGENT HARNESS & EXECUTION
 # ---------------------------------------------------------------------------
 
 def run_agent_pipeline():
     gemini_api_key = os.environ.get("GEMINI_API_KEY")
     recipient_email = os.environ.get("RECIPIENT_EMAIL")
 
-    if not gemini_api_key or not recipient_email:
-        raise ValueError("Missing GEMINI_API_KEY or RECIPIENT_EMAIL secrets.")
+    if not gemini_api_key:
+        raise ValueError("Missing GEMINI_API_KEY environment variable.")
+    if not recipient_email:
+        raise ValueError("Missing RECIPIENT_EMAIL environment variable.")
 
+    # Initialize LLM with Google Gemini
     llm = ChatGoogleGenerativeAI(
         model="gemini-2.5-flash",
         google_api_key=gemini_api_key,
@@ -106,7 +113,7 @@ def run_agent_pipeline():
 
     prompt = ChatPromptTemplate.from_messages([
         ("system", """
-        You are a Senior Data Engineering AI Agent.
+        You are an autonomous Senior Data Engineering AI Agent.
         Your goal is to find trending YouTube videos and RSS news published recently (last 3 days) 
         focused on:
         - Snowflake Cortex AI
@@ -119,11 +126,11 @@ def run_agent_pipeline():
         1. Call `search_trending_youtube_videos` using relevant search terms.
         2. Call `fetch_rss_updates` for core blog updates.
         3. Evaluate content through a Data Engineering lens.
-        4. For high-value items, construct an HTML digest containing:
+        4. For high-value items (Score 7/10 or higher), construct an HTML digest containing:
            - Video / Article Title & Direct Link
            - Channel Name / Views / Publish Date
            - **What's New in There:** (Key features or announcements)
-           - **Why You Need to Watch:** (Impact on engineering pipelines, performance, or costs)
+           - **Why You Need to Watch/Read:** (Impact on engineering pipelines, performance, or costs)
         5. Dispatch the HTML digest using `send_email_digest`.
         """),
         ("human", "{input}"),

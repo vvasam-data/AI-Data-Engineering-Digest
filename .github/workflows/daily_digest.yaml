@@ -19,7 +19,7 @@ jobs:
           
       - name: Install dependencies
         run: |
-          pip install langchain langchain-google-genai feedparser resend youtube-transcript-api pydantic
+          pip install langchain langchain-google-genai feedparser resend youtube-transcript-api youtube-search-python pydantic
           
       - name: Execute Agent Digest Script
         env:
