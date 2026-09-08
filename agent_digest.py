@@ -1,9 +1,11 @@
 import os
 import json
 import re
+import time
 import feedparser
 import resend
 from datetime import datetime, timezone, timedelta
+from email.utils import parsedate_to_datetime
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtubesearchpython import VideosSearch
 
@@ -14,6 +16,9 @@ from langchain_core.messages import HumanMessage, SystemMessage
 HISTORY_FILE = "sent_history.json"
 RETENTION_DAYS = 30
 RECENT_DAYS = 3
+MAX_RSS_ENTRIES_PER_FEED = 50
+RSS_SUMMARY_CHARS = 600
+RSS_USER_AGENT = "AI-Data-Engineering-Digest/1.0 (+https://github.com/vvasam-data/AI-Data-Engineering-Digest)"
 
 
 def parse_datetime_value(value):
@@ -26,7 +31,7 @@ def parse_datetime_value(value):
             return value.replace(tzinfo=timezone.utc)
         return value.astimezone(timezone.utc)
 
-    if isinstance(value, tuple) and len(value) >= 9:
+    if isinstance(value, time.struct_time) or (isinstance(value, tuple) and len(value) >= 6):
         try:
             dt = datetime(*value[:6])
             if dt.tzinfo is None:
@@ -80,6 +85,14 @@ def parse_datetime_value(value):
             days = 0 if lowered == "today" else 1
             return datetime.now(timezone.utc) - timedelta(days=days)
 
+        try:
+            dt = parsedate_to_datetime(text)
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+            return dt.astimezone(timezone.utc)
+        except (TypeError, ValueError, OverflowError, IndexError):
+            pass
+
     return None
 
 
@@ -91,6 +104,37 @@ def is_recent_enough(value, days: int = RECENT_DAYS) -> bool:
 
     cutoff = datetime.now(timezone.utc) - timedelta(days=days)
     return parsed_dt >= cutoff
+
+
+def classify_recency(value, days: int = RECENT_DAYS):
+    """Return (status, parsed_dt) where status is recent, too_old, or unparseable."""
+    parsed_dt = parse_datetime_value(value)
+    if parsed_dt is None:
+        return "unparseable", None
+
+    cutoff = datetime.now(timezone.utc) - timedelta(days=days)
+    if parsed_dt >= cutoff:
+        return "recent", parsed_dt
+    return "too_old", parsed_dt
+
+
+def rss_entry_recency_value(entry):
+    """Prefer feedparser's parsed timestamps over raw RFC 822 strings."""
+    for attr in ("published_parsed", "updated_parsed", "created_parsed"):
+        value = getattr(entry, attr, None)
+        if value:
+            return value
+    for attr in ("published", "updated", "created"):
+        value = getattr(entry, attr, None)
+        if value:
+            return value
+    return None
+
+
+def rss_entry_display_date(entry, parsed_dt):
+    if parsed_dt is not None:
+        return parsed_dt.isoformat()
+    return getattr(entry, "published", None) or getattr(entry, "updated", None) or ""
 
 
 # ---------------------------------------------------------------------------
@@ -201,41 +245,110 @@ def search_trending_youtube_videos(queries: list[str]) -> str:
 @tool
 def fetch_rss_updates(rss_urls: list[str]) -> str:
     """
-    Fetches only RSS entries from the last 3 days.
+    Fetches RSS entries from the last 3 days across each feed (not just the first 3 items).
     Filters out articles already sent within the last 30 days.
+    Returns items plus per-feed lookup stats so empty retrieval is distinguishable from low relevance.
     """
     sent_history = load_sent_history()
     fetched_data = []
+    feed_stats = []
+    request_headers = {
+        "User-Agent": RSS_USER_AGENT,
+        "Accept": "application/rss+xml, application/atom+xml, application/xml, text/xml;q=0.9, */*;q=0.8",
+    }
 
     for url in rss_urls:
-        feed = feedparser.parse(url)
-        for entry in feed.entries[:3]:
-            article_link = getattr(entry, "link", "")
-            if not article_link:
-                continue
+        stats = {
+            "url": url,
+            "ok": False,
+            "http_status": None,
+            "entry_count": 0,
+            "kept": 0,
+            "too_old": 0,
+            "unparseable_date": 0,
+            "already_sent": 0,
+            "missing_link": 0,
+            "error": None,
+        }
 
-            published_value = getattr(entry, "published", None)
-            if not published_value:
-                published_value = getattr(entry, "published_parsed", None)
-            if not published_value:
-                published_value = getattr(entry, "updated", None)
-            if not published_value:
-                published_value = getattr(entry, "updated_parsed", None)
+        try:
+            feed = feedparser.parse(url, request_headers=request_headers)
+            http_status = getattr(feed, "status", None)
+            stats["http_status"] = http_status
+            entries = list(getattr(feed, "entries", []) or [])
+            stats["entry_count"] = len(entries)
 
-            if not is_recent_enough(published_value, days=RECENT_DAYS):
-                continue
+            if http_status and int(http_status) >= 400:
+                stats["error"] = f"HTTP {http_status}"
+            elif not entries and getattr(feed, "bozo", False):
+                bozo_exc = getattr(feed, "bozo_exception", None)
+                stats["error"] = str(bozo_exc) if bozo_exc else "Invalid or non-RSS response"
+            else:
+                stats["ok"] = True
 
-            if article_link in sent_history:
-                continue
+            for entry in entries[:MAX_RSS_ENTRIES_PER_FEED]:
+                article_link = getattr(entry, "link", "") or getattr(entry, "id", "")
+                if not article_link:
+                    stats["missing_link"] += 1
+                    continue
 
-            fetched_data.append({
-                "title": getattr(entry, "title", "No Title"),
-                "link": article_link,
-                "summary": getattr(entry, "summary", ""),
-                "published": published_value
-            })
+                recency_value = rss_entry_recency_value(entry)
+                recency_status, parsed_dt = classify_recency(recency_value, days=RECENT_DAYS)
+                if recency_status == "unparseable":
+                    stats["unparseable_date"] += 1
+                    continue
+                if recency_status == "too_old":
+                    stats["too_old"] += 1
+                    continue
 
-    return json.dumps(fetched_data, indent=2)
+                if article_link in sent_history:
+                    stats["already_sent"] += 1
+                    continue
+
+                summary = getattr(entry, "summary", "") or ""
+                if len(summary) > RSS_SUMMARY_CHARS:
+                    summary = summary[:RSS_SUMMARY_CHARS].rstrip() + "..."
+
+                fetched_data.append({
+                    "title": getattr(entry, "title", "No Title"),
+                    "link": article_link,
+                    "summary": summary,
+                    "published": rss_entry_display_date(entry, parsed_dt),
+                    "source_feed": url,
+                })
+                stats["kept"] += 1
+        except Exception as exc:
+            stats["error"] = str(exc)
+
+        feed_stats.append(stats)
+        print(
+            f"[rss] {url}: ok={stats['ok']} status={stats['http_status']} "
+            f"entries={stats['entry_count']} kept={stats['kept']} too_old={stats['too_old']} "
+            f"unparseable={stats['unparseable_date']} already_sent={stats['already_sent']} "
+            f"error={stats['error']}"
+        )
+
+    successful_feeds = [s for s in feed_stats if s["ok"]]
+    failed_feeds = [s for s in feed_stats if not s["ok"]]
+    if fetched_data:
+        lookup_status = "items_found"
+    elif not rss_urls:
+        lookup_status = "no_feeds_provided"
+    elif failed_feeds and not successful_feeds:
+        lookup_status = "feeds_failed"
+    else:
+        lookup_status = "no_recent_items"
+
+    return json.dumps(
+        {
+            "lookup_status": lookup_status,
+            "item_count": len(fetched_data),
+            "items": fetched_data,
+            "feed_stats": feed_stats,
+        },
+        indent=2,
+        default=str,
+    )
 
 
 @tool
@@ -304,8 +417,10 @@ def run_agent_pipeline():
        - **What's New in There:** (Key features or announcements)
        - **Why You Need to Watch/Read:** (Impact on engineering pipelines, performance, or costs)
     5. Pass all the links included in your email into the `sent_item_links` parameter of `send_email_digest`.
-    6. If no new high-quality items are found (all retrieved items were sent recently or are irrelevant), 
-       send a lightweight email stating: "<p>No new high-signal Data Engineering AI updates found today.</p>"
+    6. Distinguish lookup failure from low relevance using RSS `lookup_status`:
+       - `feeds_failed` or YouTube/RSS tools returned errors and zero items: send an email that says retrieval failed and include the failed feed URLs / HTTP statuses from `feed_stats`. Do NOT claim there were no high-signal updates.
+       - `no_recent_items`: send a lightweight email stating no new items were published in the last 3 days (optionally mention already-sent counts).
+       - `items_found` but none score 7/10+: send a lightweight email stating: "<p>No new high-signal Data Engineering AI updates found today.</p>"
     """
 
     user_prompt = f"""
@@ -320,12 +435,11 @@ def run_agent_pipeline():
     Fetch RSS feeds from:
     [
       "https://rss.arxiv.org/rss/cs.DB",
-      "https://blog.langchain.dev/rss/",
-      "https://www.snowflake.com/blog/feed/",
       "https://www.dataengineeringweekly.com/feed/",
-      "https://www.databricks.com/blog/rss.xml",
+      "https://www.databricks.com/feed",
+      "https://medium.com/feed/snowflake",
       "https://netflixtechblog.com/feed",
-      "https://huggingface.co/blog/feed.xml
+      "https://huggingface.co/blog/feed.xml"
     ]
 
     Filter for high-signal updates and send the daily digest email to "{recipient_email}".
