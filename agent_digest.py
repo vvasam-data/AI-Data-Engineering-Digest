@@ -396,7 +396,7 @@ def run_agent_pipeline():
         google_api_key=gemini_api_key,
         temperature=0.2
     ).bind_tools(tools)
-
+    tool_results = {}
     system_instruction = """
     You are an autonomous Senior Data Engineering AI Agent.
     Your goal is to find new trending YouTube videos and RSS news published recently 
@@ -458,15 +458,53 @@ def run_agent_pipeline():
         for tool_call in response.tool_calls:
             selected_tool = tools_by_name[tool_call["name"]]
             tool_output = selected_tool.invoke(tool_call["args"])
-            
+            tool_results[tool_call["name"]] = tool_output
+
             messages.append({
                 "role": "tool",
                 "content": str(tool_output),
                 "tool_call_id": tool_call["id"]
             })
-            
+
         response = llm.invoke(messages)
         messages.append(response)
+
+    youtube_payload = tool_results.get("search_trending_youtube_videos")
+    rss_payload = tool_results.get("fetch_rss_updates")
+
+    youtube_items = []
+    rss_items = []
+
+    try:
+        if isinstance(youtube_payload, str):
+            youtube_items = json.loads(youtube_payload)
+            if not isinstance(youtube_items, list):
+                youtube_items = []
+    except Exception:
+        youtube_items = []
+
+    try:
+        if isinstance(rss_payload, str):
+            rss_json = json.loads(rss_payload)
+            rss_items = rss_json.get("items", []) if isinstance(rss_json, dict) else []
+    except Exception:
+        rss_items = []
+
+    if not youtube_items and not rss_items:
+        print("[agent] No recent RSS or YouTube items qualified for the 3-day window or the sources were empty.")
+        if isinstance(rss_payload, str):
+            try:
+                rss_json = json.loads(rss_payload)
+                print(json.dumps(rss_json.get("feed_stats", []), indent=2))
+            except Exception:
+                print("[agent] RSS lookup details unavailable.")
+        no_update_html = "<p>No new high-signal Data Engineering AI updates found in the last 3 days.</p>"
+        send_email_digest(
+            to_email=recipient_email,
+            subject="AI Data Engineering Digest - No New Updates",
+            html_content=no_update_html,
+            sent_item_links=[]
+        )
 
     print("Agent pipeline completed execution successfully.")
 
