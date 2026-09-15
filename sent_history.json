@@ -25,5 +25,9 @@
   "https://www.databricks.com/blog/improving-lakebase-postgres-compute-cache": "2026-09-12T14:39:30.279803+00:00",
   "https://www.databricks.com/blog/health-plans-your-bi-tells-you-mlr-moved-can-your-ai-tell-you-why": "2026-09-13T15:18:37.539059+00:00",
   "https://medium.com/snowflake/semantic-governance-in-snowflake-governing-meaning-not-just-access-eca2674a0d92?source=rss----34b6daafc07---4": "2026-09-14T17:15:42.721276+00:00",
-  "https://medium.com/snowflake/conformed-star-schema-in-semantic-views-how-multi-fact-models-share-dimensions-without-ambiguity-cd2f99e81bfb?source=rss----34b6daafc07---4": "2026-09-14T17:15:42.721276+00:00"
+  "https://medium.com/snowflake/conformed-star-schema-in-semantic-views-how-multi-fact-models-share-dimensions-without-ambiguity-cd2f99e81bfb?source=rss----34b6daafc07---4": "2026-09-14T17:15:42.721276+00:00",
+  "https://www.databricks.com/blog/announcing-demand-state-repartitioning-apache-sparktm-structured-streaming-databricks": "2026-09-15T15:55:58.221610+00:00",
+  "https://medium.com/snowflake/sharing-and-governing-skills-in-snowflake-coco-f45a2d57462d?source=rss----34b6daafc07---4": "2026-09-15T15:55:58.221610+00:00",
+  "https://www.databricks.com/blog/managed-postgres": "2026-09-15T15:55:58.221610+00:00",
+  "https://arxiv.org/abs/2608.12365": "2026-09-15T15:55:58.221610+00:00"
 }
