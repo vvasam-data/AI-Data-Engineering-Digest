@@ -63,5 +63,7 @@
   "https://www.databricks.com/blog/how-concurrence-governs-clinical-ai-trillion-token-scale-unity-gateway": "2026-09-24T16:12:40.611530+00:00",
   "https://medium.com/snowflake/event-driven-glue-catalog-registration-for-snowflake-managed-iceberg-tables-35f3556d3358": "2026-09-24T16:12:40.611530+00:00",
   "https://medium.com/snowflake/from-dbt-core-v1-to-dbt-v2-on-snowflake-a-practical-migration-guide-4eb137573a1f": "2026-09-24T16:12:40.611530+00:00",
-  "https://arxiv.org/abs/2606.03946": "2026-09-24T16:12:40.611530+00:00"
+  "https://arxiv.org/abs/2606.03946": "2026-09-24T16:12:40.611530+00:00",
+  "https://medium.com/snowflake/from-kafka-dependency-to-direct-ingestion-a-production-architecture-with-snowpipe-streaming-a8db39369593?source=rss----34b6daafc07---4": "2026-09-25T16:09:45.384540+00:00",
+  "https://arxiv.org/abs/2609.29661": "2026-09-25T16:09:45.384540+00:00"
 }
