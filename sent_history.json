@@ -1,13 +1,4 @@
 {
-  "https://arxiv.org/abs/2609.04269": "2026-09-08T00:49:03.062880+00:00",
-  "https://arxiv.org/abs/2609.04509": "2026-09-08T00:49:03.062880+00:00",
-  "https://arxiv.org/abs/2609.05014": "2026-09-08T00:49:03.062880+00:00",
-  "https://arxiv.org/abs/2609.05095": "2026-09-08T00:49:03.062880+00:00",
-  "https://arxiv.org/abs/2602.03278": "2026-09-08T00:49:03.062880+00:00",
-  "https://arxiv.org/abs/2609.02669": "2026-09-08T00:49:03.062880+00:00",
-  "https://arxiv.org/abs/2502.00285": "2026-09-08T00:49:03.062880+00:00",
-  "https://arxiv.org/abs/2608.31082": "2026-09-08T00:49:03.062880+00:00",
-  "https://www.dataengineeringweekly.com/p/data-engineering-weekly-286": "2026-09-08T00:49:03.062880+00:00",
   "https://www.databricks.com/blog/40-year-old-database-rule-agents-just-broke-how-ltap-unifies-oltp-and-olap-workloads": "2026-09-09T15:34:53.156859+00:00",
   "https://www.databricks.com/blog/adaptive-instructed-retriever-frontier-quality-search-2x-lower-latency": "2026-09-09T15:34:53.156859+00:00",
   "https://www.databricks.com/blog/introducing-consort-test-driven-development-branching-database": "2026-09-09T15:34:53.156859+00:00",
@@ -89,5 +80,9 @@
   "https://medium.com/snowflake/confidently-wrong-i-let-an-ai-analyst-loose-on-snowflake-with-and-without-a-semantic-model-3ac30c6fe10a?source=rss----34b6daafc07---4": "2026-10-06T17:37:02.669508+00:00",
   "https://www.databricks.com/blog/now-ga-building-permission-aware-databricks-apps-behalf-user-authorization": "2026-10-07T18:09:27.092755+00:00",
   "https://medium.com/snowflake/mainframe-data-meets-snowflake-datastream-tdt-goes-snowflake-native-d68259fa00ad?source=rss----34b6daafc07---4": "2026-10-07T18:09:27.092755+00:00",
-  "https://www.databricks.com/blog/lakehouse-better-data-warehouse-2026-benchmarks-and-proof": "2026-10-07T18:09:27.092755+00:00"
+  "https://www.databricks.com/blog/lakehouse-better-data-warehouse-2026-benchmarks-and-proof": "2026-10-07T18:09:27.092755+00:00",
+  "https://www.databricks.com/blog/announcing-workday-data-connect-federation-unity-catalog": "2026-10-08T18:11:46.556337+00:00",
+  "https://www.databricks.com/blog/meta-ads-mcp-databricks": "2026-10-08T18:11:46.556337+00:00",
+  "https://arxiv.org/abs/2610.09286": "2026-10-08T18:11:46.556337+00:00",
+  "https://arxiv.org/abs/2610.09894": "2026-10-08T18:11:46.556337+00:00"
 }
