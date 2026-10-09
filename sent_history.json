@@ -1,10 +1,4 @@
 {
-  "https://www.databricks.com/blog/40-year-old-database-rule-agents-just-broke-how-ltap-unifies-oltp-and-olap-workloads": "2026-09-09T15:34:53.156859+00:00",
-  "https://www.databricks.com/blog/adaptive-instructed-retriever-frontier-quality-search-2x-lower-latency": "2026-09-09T15:34:53.156859+00:00",
-  "https://www.databricks.com/blog/introducing-consort-test-driven-development-branching-database": "2026-09-09T15:34:53.156859+00:00",
-  "https://medium.com/snowflake/what-3-7-stars-wont-tell-you-fcaa1c7058b2": "2026-09-09T15:34:53.156859+00:00",
-  "https://arxiv.org/abs/2609.08160": "2026-09-09T15:34:53.156859+00:00",
-  "https://arxiv.org/abs/2609.07782": "2026-09-09T15:34:53.156859+00:00",
   "https://medium.com/snowflake/ai-document-intelligence-using-node-js-on-snowflake-app-runtime-4f151b11056b": "2026-09-11T15:33:32.833750+00:00",
   "https://www.databricks.com/blog/build-durable-agents-temporal-and-lakebase": "2026-09-10T15:31:20.115731+00:00",
   "https://medium.com/snowflake/the-chatbot-i-built-with-openai-in-2025-and-why-i-wouldnt-build-it-that-way-today-801e90899fcf": "2026-09-10T15:31:20.115731+00:00",
@@ -84,5 +78,9 @@
   "https://www.databricks.com/blog/announcing-workday-data-connect-federation-unity-catalog": "2026-10-08T18:11:46.556337+00:00",
   "https://www.databricks.com/blog/meta-ads-mcp-databricks": "2026-10-08T18:11:46.556337+00:00",
   "https://arxiv.org/abs/2610.09286": "2026-10-08T18:11:46.556337+00:00",
-  "https://arxiv.org/abs/2610.09894": "2026-10-08T18:11:46.556337+00:00"
+  "https://arxiv.org/abs/2610.09894": "2026-10-08T18:11:46.556337+00:00",
+  "https://www.databricks.com/blog/lakebase-and-agentic-sdlc-branching-databases-coding-agents": "2026-10-09T17:44:19.450031+00:00",
+  "https://www.databricks.com/blog/load-terabytes-data-minutes-lakebase-postgres": "2026-10-09T17:44:19.450031+00:00",
+  "https://www.databricks.com/blog/introducing-funke-native-hl7v2-parsing-databricks": "2026-10-09T17:44:19.450031+00:00",
+  "https://medium.com/snowflake/modernizing-external-volume-access-with-workload-identity-federation-e5adadde26d0?source=rss----34b6daafc07---4": "2026-10-09T17:44:19.450031+00:00"
 }
