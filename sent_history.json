@@ -1,7 +1,4 @@
 {
-  "https://www.databricks.com/blog/unify-your-marketing-data-lakeflow-connect": "2026-09-12T14:39:30.279803+00:00",
-  "https://medium.com/snowflake/ai-document-intelligence-using-node-js-on-snowflake-app-runtime-4f151b11056b?source=rss----34b6daafc07---4": "2026-09-12T14:39:30.279803+00:00",
-  "https://www.databricks.com/blog/improving-lakebase-postgres-compute-cache": "2026-09-12T14:39:30.279803+00:00",
   "https://www.databricks.com/blog/health-plans-your-bi-tells-you-mlr-moved-can-your-ai-tell-you-why": "2026-09-13T15:18:37.539059+00:00",
   "https://medium.com/snowflake/semantic-governance-in-snowflake-governing-meaning-not-just-access-eca2674a0d92?source=rss----34b6daafc07---4": "2026-09-14T17:15:42.721276+00:00",
   "https://medium.com/snowflake/conformed-star-schema-in-semantic-views-how-multi-fact-models-share-dimensions-without-ambiguity-cd2f99e81bfb?source=rss----34b6daafc07---4": "2026-09-14T17:15:42.721276+00:00",
@@ -76,5 +73,9 @@
   "https://www.databricks.com/blog/lakebase-and-agentic-sdlc-branching-databases-coding-agents": "2026-10-09T17:44:19.450031+00:00",
   "https://www.databricks.com/blog/load-terabytes-data-minutes-lakebase-postgres": "2026-10-09T17:44:19.450031+00:00",
   "https://www.databricks.com/blog/introducing-funke-native-hl7v2-parsing-databricks": "2026-10-09T17:44:19.450031+00:00",
-  "https://medium.com/snowflake/modernizing-external-volume-access-with-workload-identity-federation-e5adadde26d0?source=rss----34b6daafc07---4": "2026-10-09T17:44:19.450031+00:00"
+  "https://medium.com/snowflake/modernizing-external-volume-access-with-workload-identity-federation-e5adadde26d0?source=rss----34b6daafc07---4": "2026-10-09T17:44:19.450031+00:00",
+  "https://medium.com/snowflake/ai-powered-gtm-triage-smart-suggestions-using-cortex-search-8d518bf4bf03?source=rss----34b6daafc07---4": "2026-10-12T20:36:34.790238+00:00",
+  "https://www.databricks.com/blog/how-flo-health-built-safer-more-useful-open-models-databricks-ai-runtime": "2026-10-12T20:36:34.790238+00:00",
+  "https://arxiv.org/abs/2610.12768": "2026-10-12T20:36:34.790238+00:00",
+  "https://arxiv.org/abs/2602.04430": "2026-10-12T20:36:34.790238+00:00"
 }
