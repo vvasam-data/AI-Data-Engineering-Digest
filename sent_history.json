@@ -1,10 +1,4 @@
 {
-  "https://medium.com/snowflake/semantic-governance-in-snowflake-governing-meaning-not-just-access-eca2674a0d92?source=rss----34b6daafc07---4": "2026-09-14T17:15:42.721276+00:00",
-  "https://medium.com/snowflake/conformed-star-schema-in-semantic-views-how-multi-fact-models-share-dimensions-without-ambiguity-cd2f99e81bfb?source=rss----34b6daafc07---4": "2026-09-14T17:15:42.721276+00:00",
-  "https://www.databricks.com/blog/announcing-demand-state-repartitioning-apache-sparktm-structured-streaming-databricks": "2026-09-15T15:55:58.221610+00:00",
-  "https://medium.com/snowflake/sharing-and-governing-skills-in-snowflake-coco-f45a2d57462d?source=rss----34b6daafc07---4": "2026-09-15T15:55:58.221610+00:00",
-  "https://www.databricks.com/blog/managed-postgres": "2026-09-15T15:55:58.221610+00:00",
-  "https://arxiv.org/abs/2608.12365": "2026-09-15T15:55:58.221610+00:00",
   "https://medium.com/snowflake/real-time-analytics-on-snowflake-a-repeatable-benchmark-for-sub-second-latency-at-scale-49b666f2deb2?source=rss----34b6daafc07---4": "2026-09-17T15:53:44.396367+00:00",
   "https://www.databricks.com/blog/regex-rows-simplifying-pattern-detection-sql-matchrecognize": "2026-09-17T15:53:44.396367+00:00",
   "https://medium.com/snowflake/identity-resolution-that-shows-its-work-e64db4dd2004?source=rss----34b6daafc07---4": "2026-09-17T15:53:44.396367+00:00",
@@ -80,5 +74,11 @@
   "https://www.databricks.com/blog/sizing-lakebase-search-lessons-real-app-and-4-million-passages": "2026-10-14T16:11:33.706870+00:00",
   "https://medium.com/snowflake/from-prompt-to-query-real-cost-of-agents-on-snowflake-f4380037d553?source=rss----34b6daafc07---4": "2026-10-14T16:11:33.706870+00:00",
   "https://www.databricks.com/blog/introducing-private-network-gateway": "2026-10-14T16:11:33.706870+00:00",
-  "https://www.dataengineeringweekly.com/p/the-self-organizing-data-stack": "2026-10-14T16:11:33.706870+00:00"
+  "https://www.dataengineeringweekly.com/p/the-self-organizing-data-stack": "2026-10-14T16:11:33.706870+00:00",
+  "https://medium.com/snowflake/governing-data-and-ai-agents-in-snowflake-a-data-engineers-field-notes-0662c602b404?source=rss----34b6daafc07---4": "2026-10-15T15:59:15.417720+00:00",
+  "https://www.databricks.com/blog/how-factset-cut-model-training-and-deployment-days-hours-databricks-ai-runtime": "2026-10-15T15:59:15.417720+00:00",
+  "https://netflixtechblog.com/reliable-gpu-compute-for-large-training-inference-jobs-d62b03a96d7a": "2026-10-15T15:59:15.417720+00:00",
+  "https://arxiv.org/abs/2610.20527": "2026-10-15T15:59:15.417720+00:00",
+  "https://netflixtechblog.com/the-lifecycle-of-llm-as-a-judge-building-aligning-and-monitoring-at-scale-c95bd8283508": "2026-10-15T15:59:15.417720+00:00",
+  "https://www.databricks.com/blog/whats-new-lakeflow-designer-october-2026-roundup": "2026-10-15T15:59:15.417720+00:00"
 }
