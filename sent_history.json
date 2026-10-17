@@ -85,5 +85,9 @@
   "https://www.databricks.com/blog/geospatial-queries-are-38x-faster-lakehousert": "2026-10-16T15:47:36.663688+00:00",
   "https://www.databricks.com/blog/reducing-noise-how-atlassian-built-ocsf-security-lakehouse-databricks": "2026-10-16T15:47:36.663688+00:00",
   "https://netflixtechblog.com/datajunction-as-netflixs-answer-to-the-missing-piece-of-the-modern-data-stack-92af926b40a5?source=rss----2615bd06b42e---4": "2026-10-16T15:47:36.663688+00:00",
-  "https://huggingface.co/blog/nvidia/scaling-indic-pretraining": "2026-10-16T15:47:36.663688+00:00"
+  "https://huggingface.co/blog/nvidia/scaling-indic-pretraining": "2026-10-16T15:47:36.663688+00:00",
+  "https://medium.com/snowflake/governing-sensitive-data-exports-in-snowflake-data-movement-policies-and-a-custom-guardrail-layer-2582dea6fc62": "2026-10-17T14:40:10.727481+00:00",
+  "https://www.databricks.com/blog/transactions-are-generally-available-advancing-warehousing-lakehouse": "2026-10-17T14:40:10.727481+00:00",
+  "https://netflixtechblog.com/ontology-driven-observability-building-an-end-to-end-knowledge-graph-at-netflix-scale-421392cf5adf": "2026-10-17T14:40:10.727481+00:00",
+  "https://www.databricks.com/blog/stripe-data-pipeline-now-syncs-real-time-stripe-data-lakebase-postgres": "2026-10-17T14:40:10.727481+00:00"
 }
