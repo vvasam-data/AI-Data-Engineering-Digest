@@ -1,20 +1,4 @@
 {
-  "https://arxiv.org/abs/2609.20972": "2026-09-21T17:26:42.808092+00:00",
-  "https://arxiv.org/abs/2609.21133": "2026-09-21T17:26:42.808092+00:00",
-  "https://arxiv.org/abs/2609.21564": "2026-09-21T17:26:42.808092+00:00",
-  "https://arxiv.org/abs/2609.20842": "2026-09-21T17:26:42.808092+00:00",
-  "https://arxiv.org/abs/2609.20886": "2026-09-21T17:26:42.808092+00:00",
-  "https://arxiv.org/abs/2609.21341": "2026-09-21T17:26:42.808092+00:00",
-  "https://arxiv.org/abs/2609.21840": "2026-09-21T17:26:42.808092+00:00",
-  "https://arxiv.org/abs/2510.27141": "2026-09-21T17:26:42.808092+00:00",
-  "https://arxiv.org/abs/2512.08483": "2026-09-21T17:26:42.808092+00:00",
-  "https://arxiv.org/abs/2609.14889": "2026-09-21T17:26:42.808092+00:00",
-  "https://arxiv.org/abs/2606.21198": "2026-09-21T17:26:42.808092+00:00",
-  "https://www.dataengineeringweekly.com/p/data-engineering-weekly-288": "2026-09-21T17:26:42.808092+00:00",
-  "https://www.databricks.com/blog/enabling-secure-productive-work-personal-devices": "2026-09-21T17:26:42.808092+00:00",
-  "https://medium.com/snowflake/building-a-marketing-content-supply-chain-flywheel-with-writer-snowflake-cb13d76641ad?source=rss----34b6daafc07---4": "2026-09-21T17:26:42.808092+00:00",
-  "https://huggingface.co/blog/MultiverseComputingCAI/pruning-llms-like-a-physicist-block-removal-as-an": "2026-09-21T17:26:42.808092+00:00",
-  "https://huggingface.co/blog/tokenizers-v1": "2026-09-21T17:26:42.808092+00:00",
   "https://www.databricks.com/blog/genie-one-mcp-now-generally-available": "2026-09-23T15:49:06.089456+00:00",
   "https://medium.com/snowflake/query-time-ranges-with-snowflakes-period-data-type-ce229d2306bd?source=rss----34b6daafc07---4": "2026-09-23T15:49:06.089456+00:00",
   "https://medium.com/snowflake/accelerate-snowflake-event-tables-with-zero-copy-interactive-analytics-8f5d46621be6?source=rss----34b6daafc07---4": "2026-09-23T15:49:06.089456+00:00",
@@ -88,5 +72,10 @@
   "https://www.databricks.com/blog/databricks-ai-runtime-nvidia-train-fine-tune-models": "2026-10-21T16:19:37.916599+00:00",
   "https://medium.com/snowflake/eliminate-agent-accuracy-loss-with-long-term-cortex-memory-a2ba85390c5e?source=rss----34b6daafc07---4": "2026-10-21T16:19:37.916599+00:00",
   "https://medium.com/snowflake/ai-decisions-on-the-factory-floor-df831107e69c?source=rss----34b6daafc07---4": "2026-10-21T16:19:37.916599+00:00",
-  "https://www.databricks.com/blog/introducing-agent-memory-databricks": "2026-10-21T16:19:37.916599+00:00"
+  "https://www.databricks.com/blog/introducing-agent-memory-databricks": "2026-10-21T16:19:37.916599+00:00",
+  "https://medium.com/snowflake/stop-picking-t-shirt-sizes-what-running-adaptive-compute-taught-me-b2b8f4973cdd": "2026-10-22T16:19:46.448952+00:00",
+  "https://www.databricks.com/blog/how-hamlet-uses-databricks-lakebase-postgres-test-changes-against-production-data": "2026-10-22T16:19:46.448952+00:00",
+  "https://medium.com/snowflake/stop-searching-the-marketplace-let-coco-find-what-you-actually-need-024b5cd5334b": "2026-10-22T16:19:46.448952+00:00",
+  "https://www.databricks.com/blog/ai-runtime-generally-available": "2026-10-22T16:19:46.448952+00:00",
+  "https://arxiv.org/abs/2610.29689": "2026-10-22T16:19:46.448952+00:00"
 }
