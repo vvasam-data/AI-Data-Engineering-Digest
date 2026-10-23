@@ -1,7 +1,4 @@
 {
-  "https://www.databricks.com/blog/genie-one-mcp-now-generally-available": "2026-09-23T15:49:06.089456+00:00",
-  "https://medium.com/snowflake/query-time-ranges-with-snowflakes-period-data-type-ce229d2306bd?source=rss----34b6daafc07---4": "2026-09-23T15:49:06.089456+00:00",
-  "https://medium.com/snowflake/accelerate-snowflake-event-tables-with-zero-copy-interactive-analytics-8f5d46621be6?source=rss----34b6daafc07---4": "2026-09-23T15:49:06.089456+00:00",
   "https://www.databricks.com/blog/how-concurrence-governs-clinical-ai-trillion-token-scale-unity-gateway": "2026-09-24T16:12:40.611530+00:00",
   "https://medium.com/snowflake/event-driven-glue-catalog-registration-for-snowflake-managed-iceberg-tables-35f3556d3358": "2026-09-24T16:12:40.611530+00:00",
   "https://medium.com/snowflake/from-dbt-core-v1-to-dbt-v2-on-snowflake-a-practical-migration-guide-4eb137573a1f": "2026-09-24T16:12:40.611530+00:00",
@@ -77,5 +74,10 @@
   "https://www.databricks.com/blog/how-hamlet-uses-databricks-lakebase-postgres-test-changes-against-production-data": "2026-10-22T16:19:46.448952+00:00",
   "https://medium.com/snowflake/stop-searching-the-marketplace-let-coco-find-what-you-actually-need-024b5cd5334b": "2026-10-22T16:19:46.448952+00:00",
   "https://www.databricks.com/blog/ai-runtime-generally-available": "2026-10-22T16:19:46.448952+00:00",
-  "https://arxiv.org/abs/2610.29689": "2026-10-22T16:19:46.448952+00:00"
+  "https://arxiv.org/abs/2610.29689": "2026-10-22T16:19:46.448952+00:00",
+  "https://medium.com/snowflake/stop-picking-t-shirt-sizes-what-running-adaptive-compute-taught-me-b2b8f4973cdd?source=rss----34b6daafc07---4": "2026-10-23T16:08:11.556962+00:00",
+  "https://medium.com/snowflake/operational-ontology-on-snowflake-from-meaning-to-action-cc95c2fa37a2?source=rss----34b6daafc07---4": "2026-10-23T16:08:11.556962+00:00",
+  "https://www.databricks.com/blog/fraud-analyst-ai-coworker-detecting-telecom-fraud-real-time-one-platform": "2026-10-23T16:08:11.556962+00:00",
+  "https://arxiv.org/abs/2610.31553": "2026-10-23T16:08:11.556962+00:00",
+  "https://huggingface.co/blog/Dharma-AI/vocabx-vocabulary-specialization": "2026-10-23T16:08:11.556962+00:00"
 }
