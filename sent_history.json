@@ -1,8 +1,4 @@
 {
-  "https://www.databricks.com/blog/how-concurrence-governs-clinical-ai-trillion-token-scale-unity-gateway": "2026-09-24T16:12:40.611530+00:00",
-  "https://medium.com/snowflake/event-driven-glue-catalog-registration-for-snowflake-managed-iceberg-tables-35f3556d3358": "2026-09-24T16:12:40.611530+00:00",
-  "https://medium.com/snowflake/from-dbt-core-v1-to-dbt-v2-on-snowflake-a-practical-migration-guide-4eb137573a1f": "2026-09-24T16:12:40.611530+00:00",
-  "https://arxiv.org/abs/2606.03946": "2026-09-24T16:12:40.611530+00:00",
   "https://medium.com/snowflake/from-kafka-dependency-to-direct-ingestion-a-production-architecture-with-snowpipe-streaming-a8db39369593?source=rss----34b6daafc07---4": "2026-09-25T16:09:45.384540+00:00",
   "https://arxiv.org/abs/2609.29661": "2026-09-25T16:09:45.384540+00:00",
   "https://www.databricks.com/blog/data-dialogue-how-sp-global-energy-made-its-structured-data-estate-conversational-databricks": "2026-09-26T15:23:17.914674+00:00",
@@ -82,5 +78,13 @@
   "https://huggingface.co/blog/Dharma-AI/vocabx-vocabulary-specialization": "2026-10-23T16:08:11.556962+00:00",
   "https://www.databricks.com/blog/built-agents-case-spark-declarative-pipelines": "2026-10-24T15:04:43.261835+00:00",
   "https://medium.com/snowflake/your-agent-ran-overnight-here-is-what-it-got-wrong-98a8117e466a?source=rss----34b6daafc07---4": "2026-10-24T15:04:43.261835+00:00",
-  "https://huggingface.co/blog/microsoft/thinkingbox-training": "2026-10-24T15:04:43.261835+00:00"
+  "https://huggingface.co/blog/microsoft/thinkingbox-training": "2026-10-24T15:04:43.261835+00:00",
+  "https://www.databricks.com/blog/real-time-energy-trading-and-analytics-databricks": "2026-10-25T15:16:25.522188+00:00",
+  "https://www.databricks.com/blog/ai-cost-management": "2026-10-25T15:16:25.522188+00:00",
+  "https://www.databricks.com/blog/ai-bill-coming": "2026-10-25T15:16:25.522188+00:00",
+  "https://medium.com/snowflake/snowflake-dcm-projects-setup-guide-dcm-github-ci-cd-pipeline-881b14a4ca00?source=rss----34b6daafc07---4": "2026-10-25T15:16:25.522188+00:00",
+  "https://netflixtechblog.com/beyond-api-compatibility-building-a-tool-to-measure-the-blast-radius-of-library-changes-9474f2fd4f90?source=rss----2615bd06b42e---4": "2026-10-25T15:16:25.522188+00:00",
+  "https://netflixtechblog.com/single-tenant-titus-vm-level-isolation-on-a-multi-tenant-container-platform-6d8b1909d163?source=rss----2615bd06b42e---4": "2026-10-25T15:16:25.522188+00:00",
+  "https://huggingface.co/blog/allenai/litpivot": "2026-10-25T15:16:25.522188+00:00",
+  "https://huggingface.co/blog/torch-neuronx-model-support": "2026-10-25T15:16:25.522188+00:00"
 }
