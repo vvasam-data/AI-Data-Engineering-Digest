@@ -88,5 +88,9 @@
   "https://www.databricks.com/blog/building-live-intelligence-databricks-ai-search-supports-streaming-tables-materialized-views": "2026-10-27T17:02:44.772849+00:00",
   "https://medium.com/snowflake/converting-snowflake-native-tables-to-iceberg-part-2-76c3263188a8?source=rss----34b6daafc07---4": "2026-10-27T17:02:44.772849+00:00",
   "https://arxiv.org/abs/2505.17152": "2026-10-27T17:02:44.772849+00:00",
-  "https://www.databricks.com/blog/bigquery-databricks-strategic-framework": "2026-10-27T17:02:44.772849+00:00"
+  "https://www.databricks.com/blog/bigquery-databricks-strategic-framework": "2026-10-27T17:02:44.772849+00:00",
+  "https://medium.com/snowflake/snowflakes-managed-mcp-server-giving-ai-assistants-a-governed-door-into-your-warehouse-part-1-09077cd30c61": "2026-10-28T17:39:56.887751+00:00",
+  "https://www.databricks.com/blog/unlocking-investment-insights-without-migrating-your-data-lakehouse-federation": "2026-10-28T17:39:56.887751+00:00",
+  "https://www.databricks.com/blog/spot-fixes-measured-gains-improving-document-extraction-accuracy-aiextract-and-mlflow-prompt": "2026-10-28T17:39:56.887751+00:00",
+  "https://medium.com/snowflake/snowflakes-managed-mcp-server-building-a-chat-ui-part-2-2a2e9c85ecd2": "2026-10-28T17:39:56.887751+00:00"
 }
