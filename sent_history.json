@@ -1,13 +1,4 @@
 {
-  "https://www.databricks.com/blog/introducing-aidecide-make-fast-decisions-your-governed-data": "2026-10-01T17:43:54.651020+00:00",
-  "https://medium.com/snowflake/automating-report-commentary-with-snowflake-cortex-ai-functions-from-metrics-to-narrative-b91f0ca553be?source=rss----34b6daafc07---4": "2026-10-01T17:43:54.651020+00:00",
-  "https://www.databricks.com/blog/ip-functions-are-generally-available-bringing-high-performance-network-analytics-lakehouse": "2026-10-01T17:43:54.651020+00:00",
-  "https://arxiv.org/abs/2608.26537": "2026-10-01T17:43:54.651020+00:00",
-  "https://www.databricks.com/blog/lakebase-postgres-branch-based-restores-fast-recovery-scale": "2026-10-02T17:03:15.351985+00:00",
-  "https://medium.com/snowflake/converting-snowflake-native-tables-to-iceberg-part-1-603fdb0fdcd1?source=rss----34b6daafc07---4": "2026-10-02T17:03:15.351985+00:00",
-  "https://www.databricks.com/blog/real-time-retail-intelligence-building-e-commerce-recommendations-lakebase-and-ai-search": "2026-10-02T17:03:15.351985+00:00",
-  "https://arxiv.org/abs/2610.02046": "2026-10-02T17:03:15.351985+00:00",
-  "https://arxiv.org/abs/2610.00889": "2026-10-02T17:03:15.351985+00:00",
   "https://medium.com/snowflake/a-practical-guide-to-snowflake-code-bundles-part-1-python-6278ed2caf26?source=rss----34b6daafc07---4": "2026-10-03T15:25:50.460871+00:00",
   "https://www.databricks.com/blog/practical-guide-cost-optimization-lakebase-postgres": "2026-10-03T15:25:50.460871+00:00",
   "https://www.databricks.com/blog/nearest-join-scaling-vector-search-databricks-runtime": "2026-10-06T17:37:02.669508+00:00",
@@ -101,5 +92,11 @@
   "https://medium.com/snowflake/the-agent-is-now-a-pipeline-step-keeping-coco-automations-and-cloud-agents-reproducible-e29cfabde47b?source=rss----34b6daafc07---4": "2026-10-30T17:28:14.913027+00:00",
   "https://medium.com/snowflake/snowflakes-managed-mcp-server-giving-ai-assistants-a-governed-door-into-your-warehouse-part-1-09077cd30c61?source=rss----34b6daafc07---4": "2026-10-30T17:28:14.913027+00:00",
   "https://medium.com/snowflake/before-you-model-a-single-table-data-modelling-questions-to-ask-for-ai-agents-in-snowflake-ad242d437d16?source=rss----34b6daafc07---4": "2026-10-31T16:32:07.955194+00:00",
-  "https://medium.com/snowflake/budgets-quotas-and-monitors-the-cost-controls-i-map-before-agents-go-wider-7554c3301c4d?source=rss----34b6daafc07---4": "2026-10-31T16:32:07.955194+00:00"
+  "https://medium.com/snowflake/budgets-quotas-and-monitors-the-cost-controls-i-map-before-agents-go-wider-7554c3301c4d?source=rss----34b6daafc07---4": "2026-10-31T16:32:07.955194+00:00",
+  "https://www.databricks.com/blog/lakebase-branching-cicd-lessons-100-pr-databases": "2026-11-01T17:26:13.281638+00:00",
+  "https://www.databricks.com/blog/databricks-and-sap-unleash-end-end-data-ai-capabilities-level-enterprise-ai-transformation": "2026-11-01T17:26:13.281638+00:00",
+  "https://www.databricks.com/blog/wealth-management-client-onboarding-needs-more-ai": "2026-11-01T17:26:13.281638+00:00",
+  "https://www.databricks.com/blog/deliberate-decisions-and-enterprise-ai-value": "2026-11-01T17:26:13.281638+00:00",
+  "https://medium.com/snowflake/a-martech-perspective-on-databricks-new-cdp-capability-b0fadcb6f2c9?source=rss----34b6daafc07---4": "2026-11-01T17:26:13.281638+00:00",
+  "https://huggingface.co/blog/nvidia/nemotron-halloween": "2026-11-01T17:26:13.281638+00:00"
 }
