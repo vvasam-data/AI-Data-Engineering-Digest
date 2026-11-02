@@ -1,6 +1,4 @@
 {
-  "https://medium.com/snowflake/a-practical-guide-to-snowflake-code-bundles-part-1-python-6278ed2caf26?source=rss----34b6daafc07---4": "2026-10-03T15:25:50.460871+00:00",
-  "https://www.databricks.com/blog/practical-guide-cost-optimization-lakebase-postgres": "2026-10-03T15:25:50.460871+00:00",
   "https://www.databricks.com/blog/nearest-join-scaling-vector-search-databricks-runtime": "2026-10-06T17:37:02.669508+00:00",
   "https://www.databricks.com/blog/unlocking-data-portability-preventing-catalog-lock-register-and-unregister-apis": "2026-10-06T17:37:02.669508+00:00",
   "https://medium.com/snowflake/can-you-build-autonomous-ai-agents-in-snowflake-c251bab066cf?source=rss----34b6daafc07---4": "2026-10-06T17:37:02.669508+00:00",
@@ -98,5 +96,8 @@
   "https://www.databricks.com/blog/wealth-management-client-onboarding-needs-more-ai": "2026-11-01T17:26:13.281638+00:00",
   "https://www.databricks.com/blog/deliberate-decisions-and-enterprise-ai-value": "2026-11-01T17:26:13.281638+00:00",
   "https://medium.com/snowflake/a-martech-perspective-on-databricks-new-cdp-capability-b0fadcb6f2c9?source=rss----34b6daafc07---4": "2026-11-01T17:26:13.281638+00:00",
-  "https://huggingface.co/blog/nvidia/nemotron-halloween": "2026-11-01T17:26:13.281638+00:00"
+  "https://huggingface.co/blog/nvidia/nemotron-halloween": "2026-11-01T17:26:13.281638+00:00",
+  "https://www.databricks.com/blog/lakebase-postgres-now-generally-available-google-cloud": "2026-11-02T21:05:21.613426+00:00",
+  "https://arxiv.org/abs/2610.22731": "2026-11-02T21:05:21.613426+00:00",
+  "https://arxiv.org/abs/2610.41407": "2026-11-02T21:05:21.613426+00:00"
 }
