@@ -1,8 +1,4 @@
 {
-  "https://www.databricks.com/blog/nearest-join-scaling-vector-search-databricks-runtime": "2026-10-06T17:37:02.669508+00:00",
-  "https://www.databricks.com/blog/unlocking-data-portability-preventing-catalog-lock-register-and-unregister-apis": "2026-10-06T17:37:02.669508+00:00",
-  "https://medium.com/snowflake/can-you-build-autonomous-ai-agents-in-snowflake-c251bab066cf?source=rss----34b6daafc07---4": "2026-10-06T17:37:02.669508+00:00",
-  "https://medium.com/snowflake/confidently-wrong-i-let-an-ai-analyst-loose-on-snowflake-with-and-without-a-semantic-model-3ac30c6fe10a?source=rss----34b6daafc07---4": "2026-10-06T17:37:02.669508+00:00",
   "https://www.databricks.com/blog/now-ga-building-permission-aware-databricks-apps-behalf-user-authorization": "2026-10-07T18:09:27.092755+00:00",
   "https://medium.com/snowflake/mainframe-data-meets-snowflake-datastream-tdt-goes-snowflake-native-d68259fa00ad?source=rss----34b6daafc07---4": "2026-10-07T18:09:27.092755+00:00",
   "https://www.databricks.com/blog/lakehouse-better-data-warehouse-2026-benchmarks-and-proof": "2026-10-07T18:09:27.092755+00:00",
@@ -104,5 +100,10 @@
   "https://medium.com/snowflake/cortex-agent-versioning-and-multi-environment-deployment-18cb43e8097e?source=rss----34b6daafc07---4": "2026-11-04T19:06:25.409912+00:00",
   "https://www.databricks.com/blog/declare-and-optimize-unique-constraints-databricks": "2026-11-04T19:06:25.409912+00:00",
   "https://medium.com/snowflake/before-you-model-a-single-table-data-modelling-questions-to-ask-for-ai-agents-in-snowflake-0ac71edf8172": "2026-11-04T19:06:25.409912+00:00",
-  "https://www.databricks.com/blog/claude-platform-now-supports-native-opentelemetry-observability-databricks-mlflow": "2026-11-04T19:06:25.409912+00:00"
+  "https://www.databricks.com/blog/claude-platform-now-supports-native-opentelemetry-observability-databricks-mlflow": "2026-11-04T19:06:25.409912+00:00",
+  "https://medium.com/snowflake/inside-snowflake-expedition-launch-summary-of-new-features-announced-5b049379fd2b?source=rss----34b6daafc07---4": "2026-11-05T19:15:07.124877+00:00",
+  "https://medium.com/snowflake/before-you-model-a-single-table-data-modelling-questions-to-ask-for-ai-agents-in-snowflake-0ac71edf8172?source=rss----34b6daafc07---4": "2026-11-05T19:15:07.124877+00:00",
+  "https://www.databricks.com/blog/push-based-cdc-unity-catalog-zerobus-ingest-and-debezium": "2026-11-05T19:15:07.124877+00:00",
+  "https://www.databricks.com/blog/introducing-apache-spark-43-now-available-databricks-runtime-19": "2026-11-05T19:15:07.124877+00:00",
+  "https://arxiv.org/abs/2610.36418": "2026-11-05T19:15:07.124877+00:00"
 }
