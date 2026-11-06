@@ -1,7 +1,4 @@
 {
-  "https://www.databricks.com/blog/now-ga-building-permission-aware-databricks-apps-behalf-user-authorization": "2026-10-07T18:09:27.092755+00:00",
-  "https://medium.com/snowflake/mainframe-data-meets-snowflake-datastream-tdt-goes-snowflake-native-d68259fa00ad?source=rss----34b6daafc07---4": "2026-10-07T18:09:27.092755+00:00",
-  "https://www.databricks.com/blog/lakehouse-better-data-warehouse-2026-benchmarks-and-proof": "2026-10-07T18:09:27.092755+00:00",
   "https://www.databricks.com/blog/announcing-workday-data-connect-federation-unity-catalog": "2026-10-08T18:11:46.556337+00:00",
   "https://www.databricks.com/blog/meta-ads-mcp-databricks": "2026-10-08T18:11:46.556337+00:00",
   "https://arxiv.org/abs/2610.09286": "2026-10-08T18:11:46.556337+00:00",
@@ -105,5 +102,9 @@
   "https://medium.com/snowflake/before-you-model-a-single-table-data-modelling-questions-to-ask-for-ai-agents-in-snowflake-0ac71edf8172?source=rss----34b6daafc07---4": "2026-11-05T19:15:07.124877+00:00",
   "https://www.databricks.com/blog/push-based-cdc-unity-catalog-zerobus-ingest-and-debezium": "2026-11-05T19:15:07.124877+00:00",
   "https://www.databricks.com/blog/introducing-apache-spark-43-now-available-databricks-runtime-19": "2026-11-05T19:15:07.124877+00:00",
-  "https://arxiv.org/abs/2610.36418": "2026-11-05T19:15:07.124877+00:00"
+  "https://arxiv.org/abs/2610.36418": "2026-11-05T19:15:07.124877+00:00",
+  "https://medium.com/snowflake/query-databricks-lakeflow-pipeline-tables-from-snowflake-without-copying-data-dde301ede202?source=rss----34b6daafc07---4": "2026-11-06T18:41:10.595416+00:00",
+  "https://medium.com/snowflake/best-practices-for-scoping-and-organising-snowflake-semantic-views-6e2e2758b538?source=rss----34b6daafc07---4": "2026-11-06T18:41:10.595416+00:00",
+  "https://www.databricks.com/blog/real-time-fraud-detection-feature-views": "2026-11-06T18:41:10.595416+00:00",
+  "https://medium.com/snowflake/using-life-science-ontologies-from-a-snowflake-ai-agent-gene-ontology-and-the-ols4-mcp-c04fd5edc4ab?source=rss----34b6daafc07---4": "2026-11-06T18:41:10.595416+00:00"
 }
