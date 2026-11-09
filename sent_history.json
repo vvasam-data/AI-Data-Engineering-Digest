@@ -1,8 +1,4 @@
 {
-  "https://www.databricks.com/blog/lakebase-and-agentic-sdlc-branching-databases-coding-agents": "2026-10-09T17:44:19.450031+00:00",
-  "https://www.databricks.com/blog/load-terabytes-data-minutes-lakebase-postgres": "2026-10-09T17:44:19.450031+00:00",
-  "https://www.databricks.com/blog/introducing-funke-native-hl7v2-parsing-databricks": "2026-10-09T17:44:19.450031+00:00",
-  "https://medium.com/snowflake/modernizing-external-volume-access-with-workload-identity-federation-e5adadde26d0?source=rss----34b6daafc07---4": "2026-10-09T17:44:19.450031+00:00",
   "https://medium.com/snowflake/ai-powered-gtm-triage-smart-suggestions-using-cortex-search-8d518bf4bf03?source=rss----34b6daafc07---4": "2026-10-12T20:36:34.790238+00:00",
   "https://www.databricks.com/blog/how-flo-health-built-safer-more-useful-open-models-databricks-ai-runtime": "2026-10-12T20:36:34.790238+00:00",
   "https://arxiv.org/abs/2610.12768": "2026-10-12T20:36:34.790238+00:00",
@@ -106,5 +102,8 @@
   "https://www.databricks.com/blog/read-dont-copy-replacing-file-and-api-feeds-opensharing-part-1-why": "2026-11-07T17:11:42.117092+00:00",
   "https://www.databricks.com/blog/read-dont-copy-replacing-file-feeds-opensharing-part-2-how-implement": "2026-11-07T17:11:42.117092+00:00",
   "https://medium.com/snowflake/shipping-a-data-catalog-app-on-snowflake-app-runtime-notes-from-a-real-build-2fcc74d4e5c0?source=rss----34b6daafc07---4": "2026-11-07T17:11:42.117092+00:00",
-  "https://medium.com/snowflake/enterprise-ml-architecture-making-every-boundary-earn-its-place-c0ffaac36fd4?source=rss----34b6daafc07---4": "2026-11-07T17:11:42.117092+00:00"
+  "https://medium.com/snowflake/enterprise-ml-architecture-making-every-boundary-earn-its-place-c0ffaac36fd4?source=rss----34b6daafc07---4": "2026-11-07T17:11:42.117092+00:00",
+  "https://www.databricks.com/blog/accelerate-gpu-training-unity-catalog-tables-ucdataset": "2026-11-09T21:45:22.806564+00:00",
+  "https://medium.com/snowflake/who-is-actually-using-your-snowflake-mcp-server-683a6cb543d7?source=rss----34b6daafc07---4": "2026-11-09T21:45:22.806564+00:00",
+  "https://netflixtechblog.com/fact-checking-at-scale-building-a-more-accurate-and-efficient-synopsis-factuality-system-d7d85859d808": "2026-11-09T21:45:22.806564+00:00"
 }
