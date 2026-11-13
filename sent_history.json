@@ -1,12 +1,4 @@
 {
-  "https://medium.com/snowflake/ai-powered-gtm-triage-smart-suggestions-using-cortex-search-8d518bf4bf03?source=rss----34b6daafc07---4": "2026-10-12T20:36:34.790238+00:00",
-  "https://www.databricks.com/blog/how-flo-health-built-safer-more-useful-open-models-databricks-ai-runtime": "2026-10-12T20:36:34.790238+00:00",
-  "https://arxiv.org/abs/2610.12768": "2026-10-12T20:36:34.790238+00:00",
-  "https://arxiv.org/abs/2602.04430": "2026-10-12T20:36:34.790238+00:00",
-  "https://www.databricks.com/blog/sizing-lakebase-search-lessons-real-app-and-4-million-passages": "2026-10-14T16:11:33.706870+00:00",
-  "https://medium.com/snowflake/from-prompt-to-query-real-cost-of-agents-on-snowflake-f4380037d553?source=rss----34b6daafc07---4": "2026-10-14T16:11:33.706870+00:00",
-  "https://www.databricks.com/blog/introducing-private-network-gateway": "2026-10-14T16:11:33.706870+00:00",
-  "https://www.dataengineeringweekly.com/p/the-self-organizing-data-stack": "2026-10-14T16:11:33.706870+00:00",
   "https://medium.com/snowflake/governing-data-and-ai-agents-in-snowflake-a-data-engineers-field-notes-0662c602b404?source=rss----34b6daafc07---4": "2026-10-15T15:59:15.417720+00:00",
   "https://www.databricks.com/blog/how-factset-cut-model-training-and-deployment-days-hours-databricks-ai-runtime": "2026-10-15T15:59:15.417720+00:00",
   "https://netflixtechblog.com/reliable-gpu-compute-for-large-training-inference-jobs-d62b03a96d7a": "2026-10-15T15:59:15.417720+00:00",
@@ -111,5 +103,10 @@
   "https://arxiv.org/abs/2611.10810": "2026-11-10T19:04:51.448395+00:00",
   "https://medium.com/snowflake/agents-are-code-too-what-i-learned-shipping-a-cortex-agent-through-azure-devops-fab3adae29e8?source=rss----34b6daafc07---4": "2026-11-11T19:01:45.419608+00:00",
   "https://www.databricks.com/blog/unity-catalog-metric-views-now-power-bi-one-unified-governed-semantic-layer-all-your-reporting": "2026-11-11T19:01:45.419608+00:00",
-  "https://medium.com/snowflake/is-your-iceberg-catalog-healthy-939dc7817154?source=rss----34b6daafc07---4": "2026-11-11T19:01:45.419608+00:00"
+  "https://medium.com/snowflake/is-your-iceberg-catalog-healthy-939dc7817154?source=rss----34b6daafc07---4": "2026-11-11T19:01:45.419608+00:00",
+  "https://medium.com/snowflake/operational-ontology-on-snowflake-from-business-meaning-to-governed-ai-action-6f3ef270d3f2": "2026-11-13T18:57:17.288129+00:00",
+  "https://www.databricks.com/blog/dispelling-ltap-myths": "2026-11-13T18:57:17.288129+00:00",
+  "https://www.databricks.com/blog/genie-slack-now-generally-available-governed-ai-cowork-right-where-work-happens": "2026-11-13T18:57:17.288129+00:00",
+  "https://www.databricks.com/blog/eclipse-aerospace-simplifies-flight-data-ingestion-databricks": "2026-11-13T18:57:17.288129+00:00",
+  "https://arxiv.org/abs/2611.15975": "2026-11-13T18:57:17.288129+00:00"
 }
