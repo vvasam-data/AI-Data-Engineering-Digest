@@ -1,10 +1,4 @@
 {
-  "https://medium.com/snowflake/governing-data-and-ai-agents-in-snowflake-a-data-engineers-field-notes-0662c602b404?source=rss----34b6daafc07---4": "2026-10-15T15:59:15.417720+00:00",
-  "https://www.databricks.com/blog/how-factset-cut-model-training-and-deployment-days-hours-databricks-ai-runtime": "2026-10-15T15:59:15.417720+00:00",
-  "https://netflixtechblog.com/reliable-gpu-compute-for-large-training-inference-jobs-d62b03a96d7a": "2026-10-15T15:59:15.417720+00:00",
-  "https://arxiv.org/abs/2610.20527": "2026-10-15T15:59:15.417720+00:00",
-  "https://netflixtechblog.com/the-lifecycle-of-llm-as-a-judge-building-aligning-and-monitoring-at-scale-c95bd8283508": "2026-10-15T15:59:15.417720+00:00",
-  "https://www.databricks.com/blog/whats-new-lakeflow-designer-october-2026-roundup": "2026-10-15T15:59:15.417720+00:00",
   "https://medium.com/snowflake/your-data-pipelines-just-got-faster-and-smarter-meet-adaptive-warehouses-1b7ba6f9d7d5?source=rss----34b6daafc07---4": "2026-10-16T15:47:36.663688+00:00",
   "https://www.databricks.com/blog/geospatial-queries-are-38x-faster-lakehousert": "2026-10-16T15:47:36.663688+00:00",
   "https://www.databricks.com/blog/reducing-noise-how-atlassian-built-ocsf-security-lakehouse-databricks": "2026-10-16T15:47:36.663688+00:00",
@@ -108,5 +102,9 @@
   "https://www.databricks.com/blog/dispelling-ltap-myths": "2026-11-13T18:57:17.288129+00:00",
   "https://www.databricks.com/blog/genie-slack-now-generally-available-governed-ai-cowork-right-where-work-happens": "2026-11-13T18:57:17.288129+00:00",
   "https://www.databricks.com/blog/eclipse-aerospace-simplifies-flight-data-ingestion-databricks": "2026-11-13T18:57:17.288129+00:00",
-  "https://arxiv.org/abs/2611.15975": "2026-11-13T18:57:17.288129+00:00"
+  "https://arxiv.org/abs/2611.15975": "2026-11-13T18:57:17.288129+00:00",
+  "https://medium.com/snowflake/operational-ontology-on-snowflake-from-business-meaning-to-governed-ai-action-6f3ef270d3f2?source=rss----34b6daafc07---4": "2026-11-14T17:28:54.965859+00:00",
+  "https://www.databricks.com/blog/lakehousert-scale-real-time-analytics-not-your-bill": "2026-11-14T17:28:54.965859+00:00",
+  "https://www.databricks.com/blog/openai-and-databricks-enterprise-ai-your-governed-data": "2026-11-14T17:28:54.965859+00:00",
+  "https://medium.com/snowflake/same-table-different-revenue-apache-ossie-and-snowflake-to-the-rescue-a26e5c99f5c5?source=rss----34b6daafc07---4": "2026-11-14T17:28:54.965859+00:00"
 }
