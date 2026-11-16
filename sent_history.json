@@ -1,8 +1,4 @@
 {
-  "https://medium.com/snowflake/governing-sensitive-data-exports-in-snowflake-data-movement-policies-and-a-custom-guardrail-layer-2582dea6fc62": "2026-10-17T14:40:10.727481+00:00",
-  "https://www.databricks.com/blog/transactions-are-generally-available-advancing-warehousing-lakehouse": "2026-10-17T14:40:10.727481+00:00",
-  "https://netflixtechblog.com/ontology-driven-observability-building-an-end-to-end-knowledge-graph-at-netflix-scale-421392cf5adf": "2026-10-17T14:40:10.727481+00:00",
-  "https://www.databricks.com/blog/stripe-data-pipeline-now-syncs-real-time-stripe-data-lakebase-postgres": "2026-10-17T14:40:10.727481+00:00",
   "https://medium.com/snowflake/governing-sensitive-data-exports-in-snowflake-data-movement-policies-and-a-custom-guardrail-layer-2582dea6fc62?source=rss----34b6daafc07---4": "2026-10-18T15:06:28.762551+00:00",
   "https://netflixtechblog.com/ontology-driven-observability-building-an-end-to-end-knowledge-graph-at-netflix-scale-421392cf5adf?source=rss----2615bd06b42e---4": "2026-10-18T15:06:28.762551+00:00",
   "https://www.databricks.com/blog/closing-binary-blind-spot-domain-knowledge-injection-llm-malware-triage-npm-packages": "2026-10-18T15:06:28.762551+00:00",
@@ -101,5 +97,9 @@
   "https://medium.com/snowflake/operational-ontology-on-snowflake-from-business-meaning-to-governed-ai-action-6f3ef270d3f2?source=rss----34b6daafc07---4": "2026-11-14T17:28:54.965859+00:00",
   "https://www.databricks.com/blog/lakehousert-scale-real-time-analytics-not-your-bill": "2026-11-14T17:28:54.965859+00:00",
   "https://www.databricks.com/blog/openai-and-databricks-enterprise-ai-your-governed-data": "2026-11-14T17:28:54.965859+00:00",
-  "https://medium.com/snowflake/same-table-different-revenue-apache-ossie-and-snowflake-to-the-rescue-a26e5c99f5c5?source=rss----34b6daafc07---4": "2026-11-14T17:28:54.965859+00:00"
+  "https://medium.com/snowflake/same-table-different-revenue-apache-ossie-and-snowflake-to-the-rescue-a26e5c99f5c5?source=rss----34b6daafc07---4": "2026-11-14T17:28:54.965859+00:00",
+  "https://www.databricks.com/blog/talk-your-clinical-data-unlocking-aws-healthlake-opensharing-and-genie-one": "2026-11-16T21:26:41.067562+00:00",
+  "https://www.databricks.com/blog/tabular-foundation-models-databricks-ai-runtime": "2026-11-16T21:26:41.067562+00:00",
+  "https://www.databricks.com/blog/build-real-time-next-best-offer-recommender-using-databricks-feature-views": "2026-11-16T21:26:41.067562+00:00",
+  "https://arxiv.org/abs/2611.18119": "2026-11-16T21:26:41.067562+00:00"
 }
