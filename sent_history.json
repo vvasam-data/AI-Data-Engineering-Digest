@@ -1,7 +1,4 @@
 {
-  "https://medium.com/snowflake/evaluating-snowflake-cortex-agents-measuring-behavior-not-just-answers-89e600c0c894?source=rss----34b6daafc07---4": "2026-10-20T16:03:07.975798+00:00",
-  "https://www.databricks.com/blog/customerlake-beta": "2026-10-20T16:03:07.975798+00:00",
-  "https://www.databricks.com/blog/what-makes-catalog-open-unity-catalog-advances-open-lakehouse": "2026-10-20T16:03:07.975798+00:00",
   "https://www.databricks.com/blog/databricks-ai-runtime-nvidia-train-fine-tune-models": "2026-10-21T16:19:37.916599+00:00",
   "https://medium.com/snowflake/eliminate-agent-accuracy-loss-with-long-term-cortex-memory-a2ba85390c5e?source=rss----34b6daafc07---4": "2026-10-21T16:19:37.916599+00:00",
   "https://medium.com/snowflake/ai-decisions-on-the-factory-floor-df831107e69c?source=rss----34b6daafc07---4": "2026-10-21T16:19:37.916599+00:00",
@@ -107,5 +104,10 @@
   "https://www.databricks.com/blog/how-we-raised-databricks-cluster-rate-limits-7.5": "2026-11-18T19:45:34.617136+00:00",
   "https://medium.com/snowflake/from-prompts-to-management-reports-snowflake-html-reports-with-coco-2febecfc5e8c": "2026-11-18T19:45:34.617136+00:00",
   "https://medium.com/snowflake/building-an-agent-factory-for-data-migrations-a-small-test-with-snowflake-9d4622c8f2c7": "2026-11-18T19:45:34.617136+00:00",
-  "https://huggingface.co/blog/ibm-research/time-series-powered-streamhouse": "2026-11-18T19:45:34.617136+00:00"
+  "https://huggingface.co/blog/ibm-research/time-series-powered-streamhouse": "2026-11-18T19:45:34.617136+00:00",
+  "https://arxiv.org/abs/2611.23629": "2026-11-19T19:45:34.642989+00:00",
+  "https://medium.com/snowflake/snowflake-is-moving-the-database-boundary-why-postgres-openflow-and-agents-matter-more-together-a2331da1a745?source=rss----34b6daafc07---4": "2026-11-19T19:45:34.642989+00:00",
+  "https://medium.com/snowflake/from-prompts-to-management-reports-snowflake-html-reports-with-coco-2febecfc5e8c?source=rss----34b6daafc07---4": "2026-11-19T19:45:34.642989+00:00",
+  "https://www.databricks.com/blog/how-aumovio-centralized-ai-access-databricks-unity-gateway": "2026-11-19T19:45:34.642989+00:00",
+  "https://huggingface.co/blog/moe-expert-streaming": "2026-11-19T19:45:34.642989+00:00"
 }
