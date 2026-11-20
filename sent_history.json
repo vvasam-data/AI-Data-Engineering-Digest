@@ -1,8 +1,4 @@
 {
-  "https://www.databricks.com/blog/databricks-ai-runtime-nvidia-train-fine-tune-models": "2026-10-21T16:19:37.916599+00:00",
-  "https://medium.com/snowflake/eliminate-agent-accuracy-loss-with-long-term-cortex-memory-a2ba85390c5e?source=rss----34b6daafc07---4": "2026-10-21T16:19:37.916599+00:00",
-  "https://medium.com/snowflake/ai-decisions-on-the-factory-floor-df831107e69c?source=rss----34b6daafc07---4": "2026-10-21T16:19:37.916599+00:00",
-  "https://www.databricks.com/blog/introducing-agent-memory-databricks": "2026-10-21T16:19:37.916599+00:00",
   "https://medium.com/snowflake/stop-picking-t-shirt-sizes-what-running-adaptive-compute-taught-me-b2b8f4973cdd": "2026-10-22T16:19:46.448952+00:00",
   "https://www.databricks.com/blog/how-hamlet-uses-databricks-lakebase-postgres-test-changes-against-production-data": "2026-10-22T16:19:46.448952+00:00",
   "https://medium.com/snowflake/stop-searching-the-marketplace-let-coco-find-what-you-actually-need-024b5cd5334b": "2026-10-22T16:19:46.448952+00:00",
@@ -109,5 +105,9 @@
   "https://medium.com/snowflake/snowflake-is-moving-the-database-boundary-why-postgres-openflow-and-agents-matter-more-together-a2331da1a745?source=rss----34b6daafc07---4": "2026-11-19T19:45:34.642989+00:00",
   "https://medium.com/snowflake/from-prompts-to-management-reports-snowflake-html-reports-with-coco-2febecfc5e8c?source=rss----34b6daafc07---4": "2026-11-19T19:45:34.642989+00:00",
   "https://www.databricks.com/blog/how-aumovio-centralized-ai-access-databricks-unity-gateway": "2026-11-19T19:45:34.642989+00:00",
-  "https://huggingface.co/blog/moe-expert-streaming": "2026-11-19T19:45:34.642989+00:00"
+  "https://huggingface.co/blog/moe-expert-streaming": "2026-11-19T19:45:34.642989+00:00",
+  "https://medium.com/snowflake/build-a-real-time-kinesis-to-snowflake-iceberg-pipeline-with-snowpipe-streaming-high-performance-dd44dc9b7ce5?source=rss----34b6daafc07---4": "2026-11-20T19:26:24.965886+00:00",
+  "https://www.databricks.com/blog/genie-zeroops-now-public-beta-autonomous-agent-fixes-data-pipelines-lessons-80000-customer": "2026-11-20T19:26:24.965886+00:00",
+  "https://arxiv.org/abs/2512.03389": "2026-11-20T19:26:24.965886+00:00",
+  "https://arxiv.org/abs/2610.02363": "2026-11-20T19:26:24.965886+00:00"
 }
