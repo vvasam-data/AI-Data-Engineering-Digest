@@ -1,7 +1,4 @@
 {
-  "https://www.databricks.com/blog/built-agents-case-spark-declarative-pipelines": "2026-10-24T15:04:43.261835+00:00",
-  "https://medium.com/snowflake/your-agent-ran-overnight-here-is-what-it-got-wrong-98a8117e466a?source=rss----34b6daafc07---4": "2026-10-24T15:04:43.261835+00:00",
-  "https://huggingface.co/blog/microsoft/thinkingbox-training": "2026-10-24T15:04:43.261835+00:00",
   "https://www.databricks.com/blog/real-time-energy-trading-and-analytics-databricks": "2026-10-25T15:16:25.522188+00:00",
   "https://www.databricks.com/blog/ai-cost-management": "2026-10-25T15:16:25.522188+00:00",
   "https://www.databricks.com/blog/ai-bill-coming": "2026-10-25T15:16:25.522188+00:00",
@@ -102,5 +99,7 @@
   "https://arxiv.org/abs/2610.02363": "2026-11-20T19:26:24.965886+00:00",
   "https://www.databricks.com/blog/genie-one-accuracy-why-curated-agents-need-governed-context": "2026-11-21T18:28:19.340722+00:00",
   "https://medium.com/snowflake/do-you-still-need-airflow-for-snowflake-pipelines-an-honest-answer-from-someone-whos-run-both-0e8d4a5a9036": "2026-11-21T18:28:19.340722+00:00",
-  "https://www.databricks.com/blog/ai-architecture-patterns-regulated-industries": "2026-11-21T18:28:19.340722+00:00"
+  "https://www.databricks.com/blog/ai-architecture-patterns-regulated-industries": "2026-11-21T18:28:19.340722+00:00",
+  "https://www.databricks.com/blog/announcing-general-availability-native-lakebase-postgres-sink-spark-structured-streaming": "2026-11-23T23:04:43.829819+00:00",
+  "https://medium.com/snowflake/snowflake-coco-automations-a-data-health-email-that-arrives-before-your-execs-open-the-dashboard-778be870075e?source=rss----34b6daafc07---4": "2026-11-23T23:04:43.829819+00:00"
 }
