@@ -1,12 +1,4 @@
 {
-  "https://www.databricks.com/blog/real-time-energy-trading-and-analytics-databricks": "2026-10-25T15:16:25.522188+00:00",
-  "https://www.databricks.com/blog/ai-cost-management": "2026-10-25T15:16:25.522188+00:00",
-  "https://www.databricks.com/blog/ai-bill-coming": "2026-10-25T15:16:25.522188+00:00",
-  "https://medium.com/snowflake/snowflake-dcm-projects-setup-guide-dcm-github-ci-cd-pipeline-881b14a4ca00?source=rss----34b6daafc07---4": "2026-10-25T15:16:25.522188+00:00",
-  "https://netflixtechblog.com/beyond-api-compatibility-building-a-tool-to-measure-the-blast-radius-of-library-changes-9474f2fd4f90?source=rss----2615bd06b42e---4": "2026-10-25T15:16:25.522188+00:00",
-  "https://netflixtechblog.com/single-tenant-titus-vm-level-isolation-on-a-multi-tenant-container-platform-6d8b1909d163?source=rss----2615bd06b42e---4": "2026-10-25T15:16:25.522188+00:00",
-  "https://huggingface.co/blog/allenai/litpivot": "2026-10-25T15:16:25.522188+00:00",
-  "https://huggingface.co/blog/torch-neuronx-model-support": "2026-10-25T15:16:25.522188+00:00",
   "https://medium.com/snowflake/how-writer-keeps-its-ai-infrastructure-running-with-snowflake-hybrid-tables-80f55dd652fa?source=rss----34b6daafc07---4": "2026-10-26T17:55:58.971177+00:00",
   "https://netflixtechblog.com/making-failure-diagnosis-reliable-with-pensive-ai-6b0811a1c015?source=rss----2615bd06b42e---4": "2026-10-26T17:55:58.971177+00:00",
   "https://arxiv.org/abs/2610.32586": "2026-10-26T17:55:58.971177+00:00",
@@ -101,5 +93,8 @@
   "https://medium.com/snowflake/do-you-still-need-airflow-for-snowflake-pipelines-an-honest-answer-from-someone-whos-run-both-0e8d4a5a9036": "2026-11-21T18:28:19.340722+00:00",
   "https://www.databricks.com/blog/ai-architecture-patterns-regulated-industries": "2026-11-21T18:28:19.340722+00:00",
   "https://www.databricks.com/blog/announcing-general-availability-native-lakebase-postgres-sink-spark-structured-streaming": "2026-11-23T23:04:43.829819+00:00",
-  "https://medium.com/snowflake/snowflake-coco-automations-a-data-health-email-that-arrives-before-your-execs-open-the-dashboard-778be870075e?source=rss----34b6daafc07---4": "2026-11-23T23:04:43.829819+00:00"
+  "https://medium.com/snowflake/snowflake-coco-automations-a-data-health-email-that-arrives-before-your-execs-open-the-dashboard-778be870075e?source=rss----34b6daafc07---4": "2026-11-23T23:04:43.829819+00:00",
+  "https://medium.com/snowflake/evaluating-ai-systems-in-production-on-snowflake-6fdac4f33988?source=rss----34b6daafc07---4": "2026-11-24T21:44:14.662987+00:00",
+  "https://www.databricks.com/blog/sharing-catalog-metadata-across-data-platforms-engines-and-agents": "2026-11-24T21:44:14.662987+00:00",
+  "https://medium.com/snowflake/my-automation-saw-the-broken-pipeline-it-didnt-see-the-decision-98dda7af4f6e?source=rss----34b6daafc07---4": "2026-11-24T21:44:14.662987+00:00"
 }
